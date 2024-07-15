@@ -105,3 +105,20 @@ a {
     color-scheme: dark;
   }
 }
+
+:where(.css-dev-only-do-not-override-m4timi).ant-collapse
+  > .ant-collapse-item
+  > .ant-collapse-header {
+  align-items: center !important;
+}
+
+.ant-menu .ant-menu-title-content{
+  color:white !important
+}
+.ant-menu .ant-menu-title-content :hover{
+  color:#37878b !important
+}
+.ant-menu-dark.ant-menu-horizontal >.ant-menu-item-selected{
+  color:#37878b !important;
+  background-color:inherit !important;
+}

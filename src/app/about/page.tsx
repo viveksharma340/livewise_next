@@ -1,76 +1,69 @@
 "use client";
 
-import { Carousel, Col, Image as AntImage, Typography, Card } from "antd";
+import { Carousel, Col, Image as AntImage, Typography, Card, Row } from "antd";
 import Image from "next/image";
 
 import type { CSSProperties } from "react";
 import { CaretRightOutlined } from "@ant-design/icons";
 import type { CollapseProps } from "antd";
 import { Collapse, theme } from "antd";
+import FeatureBox from "../Components/FeatureBox/FeatureBox";
+import BlogCard from "../Components/UserSayCard/USerSayCard";
+import Meta from "antd/es/card/Meta";
 
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
-
-const getItems: () => CollapseProps["items"] = (
-) => [
+const featureData = [
   {
-    key: "1",
-    label: (
-      <Col style={{ fontSize: "36px", fontWeight: 500 ,    color: 'rgb(58, 58, 58)'}}>Absolute Privacy</Col>
-    ),
-    children: (
-      <Col style={{ fontSize: "16px", fontWeight: 500,    color: 'rgb(141, 141, 141)' }}>
-        We prioritize your privacy. Our system is designed to ensure that your
-        data remains inaccessible to us. We implement stringent access controls
-        and encryption to guarantee that your data stays private, always.
-      </Col>
-    ),
+    iconBg: "linear-gradient(to right, #38a169, #4299e1)",
+    iconHoverBg: "#4299e1",
+    title: "Absolute Privacy",
+    description:
+      " We prioritize your privacy. Our system is designed to ensure that yourdata remains inaccessible to us. We implement stringent access controlsand encryption to guarantee that your data stays private, always.",
   },
   {
-    key: "2",
-    label: (
-      <Col style={{ fontSize: "44px", fontWeight: 500 }}>
-        No Third-Party Sharing
-      </Col>
-    ),
-    children: (
-      <Col style={{ fontSize: "18px", fontWeight: 500 }}>
-        Your data belongs to you. We never sell or share your information with
-        third parties. Our business model relies on providing service
-        excellence, not on trading your personal information.
-      </Col>
-    ),
+    iconBg: "linear-gradient(to right, #9f7aea, #ed64a6, #e53e3e)",
+    iconHoverBg: "#e53e3e",
+    title: "No Third-Party Sharing",
+    description:
+      "Your data belongs to you. We never sell or share your information with third parties. Our business model relies on providing service excellence, not on trading your personal information.",
   },
   {
-    key: "3",
-    label: (
-      <Col style={{ fontSize: "44px", fontWeight: 500 }}>
-        Clean User Experience
-      </Col>
-    ),
-    children: (
-      <Col style={{ fontSize: "18px", fontWeight: 500 }}>
-        Enjoy our services without interruptions. We don't use ads or push
-        recommendations. Our platform is designed to provide a straightforward,
-        uncluttered experience, focusing purely on functionality without any
-        distractions.
-      </Col>
-    ),
+    iconBg: "linear-gradient(to right, #2d3748, #1a202c, #000000)",
+    iconHoverBg: "#2d3748",
+    title: "Clean User Experience",
+    description:
+      " Enjoy our services without interruptions. We don't use ads or push recommendations. Our platform is designed to provide a straightforward, uncluttered experience, focusing purely on functionality without any distractions.",
   },
 ];
+
 const { Text } = Typography;
 const About = () => {
   const { token } = theme.useToken();
-
-  const panelStyle: React.CSSProperties = {
-    marginBottom: 24,
-    background: token.colorFillAlter,
-    borderRadius: token.borderRadiusLG,
-    border: "none",
-  };
+  const blogPosts = [
+    {
+      imgSrc:
+        "https://static.wixstatic.com/media/ca32c5_bcb6ab48d3724375b37010e242408ac7~mv2.jpeg/v1/crop/x_114,y_0,w_571,h_800/fill/w_394,h_552,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/ashish.jpeg",
+      title: "Ashish Jindal - Consultant @ BCG , B.Tech IIT-B and MBA IIM-A",
+      description:
+        "I can't thank Livewise enough for its proactive approach to financial security. The life-checkin and notification system ensures I stay on top of my finances and, in case of any unexpected event, my nominees will be informed promptly. It's like having a personal financial guardian in your pocket",
+    },
+    {
+      imgSrc:
+        "https://static.wixstatic.com/media/ca32c5_8aea025dca1b41a6979de625dd3c1383~mv2.jpeg/v1/crop/x_43,y_0,w_213,h_299/fill/w_298,h_417,al_c,lg_1,q_80,enc_auto/manish.jpeg",
+      title:
+        "Manish Maharaj - Regional Sales Manager Pidilite, Ex-Johnson & Johnson",
+      description:
+        "Livewise is a financial lifesaver! With its user-friendly interface, I can effortlessly manage my assets, liabilities, and insurances while keeping my loved ones informed. The peace of mind it provides is priceless",
+    },
+    {
+      imgSrc:
+        "https://static.wixstatic.com/media/ca32c5_4aa6e045b0be45a196e5bda48d3c8715~mv2.jpeg/v1/crop/x_51,y_0,w_253,h_355/fill/w_354,h_496,al_c,lg_1,q_80,enc_auto/karma.jpeg",
+      title:
+        "Ashish Vishwakarma - Staff Software Engineer @ Walmart Global Techr",
+      description:
+        "Livewise has revolutionized how I plan for the future. Adding primary and secondary nominees is a breeze, and the net worth tracking feature is a game-changer. This app is a must-have for anyone who wants to take control of their financial well-being.",
+      date: "May 17th, 2021",
+    },
+  ];
 
   const images = [
     "/livTwo.webp",
@@ -690,10 +683,22 @@ const About = () => {
             See How We Protect You.
           </Text>
         </Col>
-
+        <Col style={{ display: "flex", marginTop: "2rem" }}>
+          {featureData.map((feature, index) => (
+            <FeatureBox
+              key={index}
+              iconBg={feature.iconBg}
+              iconHoverBg={feature.iconHoverBg}
+              title={feature.title}
+              description={feature.description}
+            />
+          ))}
+        </Col>
+        {/* 
         <Col
           style={{
             display: "flex",
+            alignItems: "center",
             flexDirection: "column",
             width: "50%",
             justifyContent: "center",
@@ -704,12 +709,17 @@ const About = () => {
             bordered={false}
             defaultActiveKey={["1"]}
             expandIcon={({ isActive }) => (
-              <CaretRightOutlined rotate={isActive ? 90 : 0} />
+              <CaretRightOutlined
+                style={{
+                  fontSize: "16px",
+                }}
+                rotate={isActive ? 90 : 0}
+              />
             )}
             style={{ background: "white" }}
             items={getItems()}
           />
-        </Col>
+        </Col> */}
         <Col
           style={{
             display: "flex",
@@ -720,6 +730,101 @@ const About = () => {
           }}
         ></Col>
       </Col>
+      <Col
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 10,
+          alignItems: "center",
+          marginTop: "5%",
+        }}
+      >
+        <Text
+          style={{
+            fontSize: "48px",
+            fontWeight: 500,
+            lineHeight: "110%",
+            textAlign: "center",
+            color: "rgb(58, 58, 58)",
+          }}
+        >
+          What Nominee Gets ?
+        </Text>
+
+        <Text
+          style={{
+            fontSize: "24px",
+            fontWeight: 500,
+            lineHeight: "140%",
+            width: "60%",
+            textAlign: "center",
+            color: "rgb(141, 141, 141)",
+          }}
+        >
+          Nominee receives a detailed document with overall financials,
+          insurance details, and categorized assets and liabilities. Each entry
+          includes specific fields, dates, and amounts in the user's specified
+          currency.
+        </Text>
+      </Col>
+
+      <Col
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 10,
+          alignItems: "center",
+          marginBottom: "5%",
+          marginTop: "10%",
+        }}
+      >
+        <Text
+          style={{
+            fontSize: "48px",
+            fontWeight: 500,
+            lineHeight: "110%",
+            textAlign: "center",
+            color: "rgb(58, 58, 58)",
+          }}
+        >
+          Our Users Say
+        </Text>
+
+      </Col>
+      <Row gutter={[24, 24]} style={{padding:"0 10%",marginBottom:'20%'}}>
+    {blogPosts.map((post, index) => (
+      <Col key={index} span={8}>
+        <Card
+          hoverable
+          cover={<img style={{height:'450px'}} alt={post.title} src={post.imgSrc} />}
+          style={{ width: '100%' }}
+        >
+          <Col style={{display:'flex',flexDirection:'column',gap:"2rem"}}>
+          <Text      style={{
+            fontSize: "16px",
+            fontWeight: 500,
+            lineHeight: "140%",
+      
+            textAlign: "center",
+            color: "rgb(141, 141, 141)",
+          }}>
+{post.description}
+</Text>
+<Text  style={{
+            fontSize: "24px",
+            fontWeight: 500,
+            lineHeight: "110%",
+            textAlign: "center",
+            color: "rgb(58, 58, 58)",
+          }}>
+{post.title}
+</Text>
+</Col>
+
+        </Card>
+      </Col>
+    ))}
+  </Row>
     </>
   );
 };

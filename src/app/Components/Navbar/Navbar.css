@@ -8,13 +8,16 @@
     color: white;
 }
 .download-btn {
-    background-color: #37878b; /* Green background */
-    color: white;              /* White text */
+    background-color: #37878b  !important; /* Green background */
+    color: white !important;              /* White text */
     border-radius: 20px;       /* Rounded corners */
     padding: 25px 25px;        /* Padding around the text */
     font-size: 16px;           /* Font size */
     font-weight: bold;         /* Bold text */
     border: none;              /* No border */
+}
+.download-btn :hover{
+    color: white;
 }
 .ant-menu-submenu-popup.ant-menu-dark .ant-menu {
     background-color: #2f2e2e !important;

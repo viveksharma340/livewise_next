@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Button, Col, Typography } from "antd";
 import { SearchBox, Typewriter } from "./Components/SearchBar";
 import styled from "styled-components";
+import Link from "next/link";
 
 export default function Home() {
   const { Title } = Typography;
@@ -55,7 +56,7 @@ export default function Home() {
             fontWeight: 500,
           }}
         >
-          Get Started
+         <Link target="_blank" style={{color:'white !important'}} href={'https://play.google.com/store/apps/details?id=in.livewise'}>Get Started</Link>  
         </Button>
         <Text style={{ fontSize: "14px" }}>
           Secure your financial legacy with Livewise. Sign up today to start

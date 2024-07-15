@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Input, Typography } from 'antd';
 import { AudioOutlined, SendOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 const { Title, Text } = Typography;
 
@@ -20,15 +21,17 @@ const StyledInputContainer = styled.div`
 `;
 
 export const SearchBox = () => (
+  <Link href={'/about'} style={{cursor:'pointer'}}>
   <StyledInputContainer>
     <Input
       size="large"
       
       placeholder=""
       prefix={<AudioOutlined />}
-      suffix={<Button icon={<SendOutlined />} />}
+      suffix={<Button icon={<SendOutlined/>}></Button>}
     />
   </StyledInputContainer>
+  </Link>
 );
 
 export const Typewriter: React.FC<{ messages: string[]; delay: number }> = ({ messages, delay }) => {
