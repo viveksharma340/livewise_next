@@ -1,95 +1,102 @@
+"use client";
 import Image from "next/image";
-import styles from "./page.module.css";
+import { Button, Col, Typography } from "antd";
+import { SearchBox, Typewriter } from "./Components/SearchBar";
+import styled from "styled-components";
 
 export default function Home() {
+  const { Title } = Typography;
+
+  const StyledContainer = styled.div`
+    // background-color: #000000;
+    // padding: 48px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 900px) {
+      padding: 80px 0;
+    }
+  `;
+  const { Text } = Typography;
+  const questions = [
+    "How It Works ?",
+    "Add Nominees and Financial Info",
+    "Track your Net Worth",
+    "Are you alive?",
+  ];
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+    <Col style={{ display: "flex", padding: "0 10%", height: "90vh" }}>
+      <Col
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          width: "50%",
+          justifyContent: "center",
+          gap: 10,
+        }}
+      >
+        <Text style={{ fontSize: "48px", fontWeight: 500 }}>
+          Networth that outlives you.
+        </Text>
+        <Text style={{ fontSize: "18px" }}>
+          Livewise allows you to securely store your key financial info like
+          Assets, Liabilities & Insurances and ensures it gets to your nominee
+          after you are gone.
+        </Text>
+        <Button
+          style={{
+            backgroundColor: "black",
+            color: "white",
+            width: "130px",
+            borderRadius: "30px",
+            height: "50px",
+            fontSize: "16px",
+            fontWeight: 500,
+          }}
         >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          Get Started
+        </Button>
+        <Text style={{ fontSize: "14px" }}>
+          Secure your financial legacy with Livewise. Sign up today to start
+          managing, tracking, and ensuring the future of your financial data.
+          Your peace of mind is just a click away.
+        </Text>
+      </Col>
+      <Col
+        style={{
+          width: "50%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Col style={{ width: "55%", height: "85vh" }}>
+          <Image
+            src={"/homeBanner.png"}
+            alt="Decorative banner showing financial growth"
+            layout="fill"
+            objectFit="contain"
+          />
+          <StyledContainer></StyledContainer>
+        </Col>
+        <Col style={{ position: "absolute", bottom: "9.5rem", width: "80%" }}>
+          <Col style={{ position: "relative", width: "100%" }}>
+            <SearchBox />
+            <Col
+              style={{
+                display: "flex",
+                justifyContent: "flex-start",
+                position: "absolute",
+                top: "7px",
+                left: "34px",
+              }}
+            >
+              <Typewriter messages={questions} delay={150} />
+            </Col>
+          </Col>
+        </Col>
+      </Col>
+    </Col>
   );
 }

@@ -1,0 +1,22 @@
+/* Target the ant-menu-item and ant-menu-submenu-title for hover effects */
+.ant-menu-dark .ant-menu-item:hover, .ant-menu-dark .ant-menu-submenu-title:hover {
+    color:#37878b !important;
+}
+
+/* Optional: Change text color on hover if needed */
+.ant-menu-dark .ant-menu-item:hover a, .ant-menu-dark .ant-menu-submenu-title:hover a {
+    color: white;
+}
+.download-btn {
+    background-color: #37878b; /* Green background */
+    color: white;              /* White text */
+    border-radius: 20px;       /* Rounded corners */
+    padding: 25px 25px;        /* Padding around the text */
+    font-size: 16px;           /* Font size */
+    font-weight: bold;         /* Bold text */
+    border: none;              /* No border */
+}
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu {
+    background-color: #2f2e2e !important;
+    color:white !important;
+  }
