@@ -27,7 +27,7 @@ export default function Home() {
     "Are you alive?",
   ];
   return (
-    <Col style={{ display: "flex", padding: "0 10%", height: "90vh" }}>
+    <Col style={{ display: "flex", padding: "0 10%", height: "90vh",backgroundColor:'white' }}>
       <Col
         style={{
           display: "flex",

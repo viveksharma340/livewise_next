@@ -75,7 +75,7 @@ const About = () => {
     "/livEight.webp",
   ];
   return (
-    <>
+    <Col style={{backgroundColor:'white'}}>
       <Col
         style={{
           display: "flex",
@@ -774,7 +774,7 @@ const About = () => {
           flexDirection: "column",
           gap: 10,
           alignItems: "center",
-          marginBottom: "5%",
+          paddingBottom: "5%",
           marginTop: "10%",
         }}
       >
@@ -825,7 +825,7 @@ const About = () => {
       </Col>
     ))}
   </Row>
-    </>
+    </Col>
   );
 };
 
