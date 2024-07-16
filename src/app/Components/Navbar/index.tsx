@@ -11,7 +11,7 @@ import Link from "next/link";
 const Navbar: React.FC = () => {
 
   return (
-    <div style={{textAlign:'center',        backgroundColor: "#2f2e2e",  
+    <div style={{display:'flex',justifyContent:'center',        backgroundColor: "#2f2e2e",  
     }}>
 
     <Menu
