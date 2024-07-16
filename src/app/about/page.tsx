@@ -75,25 +75,32 @@ const About = () => {
     "/livEight.webp",
   ];
   return (
-    <Col style={{display:'flex',flexDirection:"column" ,alignItems:'center',width:"100%", background: 'linear-gradient(to bottom, #f4e7bf 0%, #f4e7bf 700px, white 700px, white 100%)'}}>
-      
+    <Col
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        width: "100%",
+        background:
+          "linear-gradient(to bottom, #f4e7bf 0%, #f4e7bf 700px, white 700px, white 100%)",
+      }}
+    >
       <Col
         style={{
           display: "flex",
           padding: "0 2rem",
           height: "700px",
-          gap:'3rem',
+          gap: "3rem",
 
-          maxWidth:'1200px',
+          maxWidth: "1200px",
           // backgroundColor: "",
         }}
       >
-        
         <Col
           style={{
             display: "flex",
             flexDirection: "column",
-            maxWidth: "900px",
+            maxWidth: "70%",
             justifyContent: "center",
             gap: 10,
           }}
@@ -125,7 +132,7 @@ const About = () => {
         </Col>
         <Col
           style={{
-            maxWidth: "300px",
+            maxWidth: "30%",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -169,7 +176,7 @@ const About = () => {
       </Col>
       <Col
         style={{
-          maxWidth:'1200px',
+          maxWidth: "1200px",
           display: "flex",
           padding: "0 2rem",
           marginTop: "3rem",
@@ -207,7 +214,7 @@ const About = () => {
         style={{
           display: "flex",
 
-maxWidth:'1200px',
+          maxWidth: "1200px",
           padding: "0 2rem",
           height: "600px",
         }}
@@ -284,7 +291,7 @@ maxWidth:'1200px',
       <Col
         style={{
           display: "flex",
-          maxWidth:'1200px',
+          maxWidth: "1200px",
           padding: "0 2rem",
           height: "600px",
         }}
@@ -360,7 +367,7 @@ maxWidth:'1200px',
       <Col
         style={{
           display: "flex",
-          maxWidth:'1200px',
+          maxWidth: "1200px",
           padding: "0 2rem",
           height: "600px",
         }}
@@ -437,7 +444,7 @@ maxWidth:'1200px',
       <Col
         style={{
           display: "flex",
-          maxWidth:'1200px',
+          maxWidth: "1200px",
           padding: "0 2rem",
           height: "600px",
         }}
@@ -513,7 +520,7 @@ maxWidth:'1200px',
       <Col
         style={{
           display: "flex",
-          maxWidth:'1200px',
+          maxWidth: "1200px",
           padding: "0 2rem",
           height: "600px",
         }}
@@ -589,7 +596,7 @@ maxWidth:'1200px',
       <Col
         style={{
           display: "flex",
-          maxWidth:'1200px',
+          maxWidth: "1200px",
           padding: "0 2rem",
           height: "600px",
         }}
@@ -665,7 +672,7 @@ maxWidth:'1200px',
       <Col
         style={{
           display: "flex",
-          maxWidth:'1200px',
+          maxWidth: "1200px",
           padding: "0 2rem",
           height: "600px",
           marginTop: "3rem",
@@ -804,44 +811,59 @@ maxWidth:'1200px',
         >
           Our Users Say
         </Text>
-
       </Col>
-      <Row gutter={[24, 24]} style={{ maxWidth:'1200px',
-          padding: "0 2rem",
-          marginBottom:'20%'}}>
-    {blogPosts.map((post, index) => (
-      <Col key={index} span={8}>
-        <Card
-          hoverable
-          cover={<img style={{height:'450px'}} alt={post.title} src={post.imgSrc} />}
-          style={{ width: '100%' }}
-        >
-          <Col style={{display:'flex',flexDirection:'column',gap:"2rem"}}>
-          <Text      style={{
-            fontSize: "16px",
-            fontWeight: 500,
-            lineHeight: "140%",
-      
-            textAlign: "center",
-            color: "rgb(141, 141, 141)",
-          }}>
-{post.description}
-</Text>
-<Text  style={{
-            fontSize: "24px",
-            fontWeight: 500,
-            lineHeight: "110%",
-            textAlign: "center",
-            color: "rgb(58, 58, 58)",
-          }}>
-{post.title}
-</Text>
-</Col>
+      <Row
+        gutter={[24, 24]}
+        style={{ maxWidth: "1200px", padding: "0 2rem", marginBottom: "20%" }}
+      >
+        {blogPosts.map((post, index) => (
+          <Col key={index} span={8}>
+            <Card
+              hoverable
+              cover={
+                <img
+                  style={{ height: "450px" }}
+                  alt={post.title}
+                  src={post.imgSrc}
+                />
+              }
+              style={{ width: "100%" }}
+            >
+              <Col
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "2rem",
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: "16px",
+                    fontWeight: 500,
+                    lineHeight: "140%",
 
-        </Card>
-      </Col>
-    ))}
-  </Row>
+                    textAlign: "center",
+                    color: "rgb(141, 141, 141)",
+                  }}
+                >
+                  {post.description}
+                </Text>
+                <Text
+                  style={{
+                    fontSize: "24px",
+                    fontWeight: 500,
+                    lineHeight: "110%",
+                    textAlign: "center",
+                    color: "rgb(58, 58, 58)",
+                  }}
+                >
+                  {post.title}
+                </Text>
+              </Col>
+            </Card>
+          </Col>
+        ))}
+      </Row>
     </Col>
   );
 };
