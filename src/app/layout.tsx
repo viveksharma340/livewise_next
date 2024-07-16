@@ -19,8 +19,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
+<div style={{display:'flex',justifyContent:'center',backgroundColor:'white'}}>
 
         {children}
+</div>
       </body>
     </html>
   );

@@ -27,7 +27,15 @@ export default function Home() {
     "Are you alive?",
   ];
   return (
-    <Col style={{ display: "flex", padding: "0 10%", height: "90vh",backgroundColor:'white' }}>
+    <Col
+      style={{
+        display: "flex",
+        padding: "0 2rem",
+        height: "700px",
+        backgroundColor: "white",
+        maxWidth: "1200px",
+      }}
+    >
       <Col
         style={{
           display: "flex",
@@ -56,7 +64,13 @@ export default function Home() {
             fontWeight: 500,
           }}
         >
-         <Link target="_blank" style={{color:'white !important'}} href={'https://play.google.com/store/apps/details?id=in.livewise'}>Get Started</Link>  
+          <Link
+            target="_blank"
+            style={{ color: "white !important" }}
+            href={"https://play.google.com/store/apps/details?id=in.livewise"}
+          >
+            Get Started
+          </Link>
         </Button>
         <Text style={{ fontSize: "14px" }}>
           Secure your financial legacy with Livewise. Sign up today to start
@@ -72,16 +86,14 @@ export default function Home() {
           justifyContent: "center",
         }}
       >
-        <Col style={{ width: "55%", height: "85vh" }}>
+        <Col style={{ width: "55%", height: "550px" }}>
           <Image
             src={"/homeBanner.png"}
             alt="Decorative banner showing financial growth"
             layout="fill"
-            objectFit="contain"
           />
-          <StyledContainer></StyledContainer>
         </Col>
-        <Col style={{ position: "absolute", bottom: "9.5rem", width: "80%" }}>
+        <Col style={{ position: "absolute", bottom: "12rem", width: "80%" }}>
           <Col style={{ position: "relative", width: "100%" }}>
             <SearchBox />
             <Col
