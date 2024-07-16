@@ -1,6 +1,6 @@
 "use client";
 
-import { Carousel, Col, Image as AntImage, Typography, Card, Row } from "antd";
+import {  Col, Image as AntImage, Typography, Card, Row } from "antd";
 import Image from "next/image";
 
 import type { CSSProperties } from "react";
@@ -10,6 +10,7 @@ import { Collapse, theme } from "antd";
 import FeatureBox from "../Components/FeatureBox/FeatureBox";
 import BlogCard from "../Components/UserSayCard/USerSayCard";
 import Meta from "antd/es/card/Meta";
+import dynamic from "next/dynamic";
 
 const featureData = [
   {
@@ -34,9 +35,13 @@ const featureData = [
       " Enjoy our services without interruptions. We don't use ads or push recommendations. Our platform is designed to provide a straightforward, uncluttered experience, focusing purely on functionality without any distractions.",
   },
 ];
+const Carousel = dynamic(() => import('antd/lib/carousel').then(mod => mod.default), { ssr: false });
+
 
 const { Text } = Typography;
 const About = () => {
+
+
   const { token } = theme.useToken();
   const blogPosts = [
     {
