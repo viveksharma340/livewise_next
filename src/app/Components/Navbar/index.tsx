@@ -11,6 +11,9 @@ import Link from "next/link";
 const Navbar: React.FC = () => {
 
   return (
+    <div style={{textAlign:'center',        backgroundColor: "#2f2e2e",  
+    }}>
+
     <Menu
       mode="horizontal"
       style={{ 
@@ -18,8 +21,11 @@ const Navbar: React.FC = () => {
         justifyContent: "space-between",
         alignItems: "center", 
         height: "70px", 
-        padding: "0 10%",  
+        width:'100%',
         backgroundColor: "#2f2e2e",  
+
+        maxWidth:'1300px',
+        padding: "0 1rem",  
         fontWeight:700,
         color: "white",           
       }}
@@ -42,6 +48,8 @@ const Navbar: React.FC = () => {
         <Col style={{ color: "inherit" ,backgroundColor:"inherit"}}><DownloadButton/></Col>
       </Menu.Item>
     </Menu>
+    </div>
+
   );
 };
 
