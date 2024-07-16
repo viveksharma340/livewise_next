@@ -23,3 +23,32 @@
     background-color: #2f2e2e !important;
     color:white !important;
   }
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2f2e2e;
+    padding: 0 1rem;
+  }
+  
+  .menu-desktop {
+    display: none;
+  }
+  
+  .burger-menu {
+    display: block; /* Show burger menu by default */
+    border: none;
+    background: none;
+  }
+  
+  /* Hide burger and show full menu on large screens */
+  @media (min-width: 1000px) {
+    .burger-menu {
+      display: none; /* Hide burger icon */
+    }
+    .menu-desktop {
+      display: flex; /* Show full menu */
+      width: 100%;
+      justify-content: space-between;
+    }
+  }

@@ -48,6 +48,7 @@ const Navbar: React.FC = () => {
         <Col style={{ color: "inherit" ,backgroundColor:"inherit"}}><DownloadButton/></Col>
       </Menu.Item>
     </Menu>
+    
     </div>
 
   );

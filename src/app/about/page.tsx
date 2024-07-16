@@ -75,20 +75,25 @@ const About = () => {
     "/livEight.webp",
   ];
   return (
-    <Col style={{backgroundColor:'white'}}>
+    <Col style={{display:'flex',flexDirection:"column" ,alignItems:'center',width:"100%", background: 'linear-gradient(to bottom, #f4e7bf 0%, #f4e7bf 700px, white 700px, white 100%)'}}>
+      
       <Col
         style={{
           display: "flex",
-          padding: "0 10%",
-          height: "90vh",
-          backgroundColor: "#f4e7bf",
+          padding: "0 2rem",
+          height: "700px",
+          gap:'3rem',
+
+          maxWidth:'1200px',
+          // backgroundColor: "",
         }}
       >
+        
         <Col
           style={{
             display: "flex",
             flexDirection: "column",
-            width: "70%",
+            maxWidth: "900px",
             justifyContent: "center",
             gap: 10,
           }}
@@ -120,7 +125,7 @@ const About = () => {
         </Col>
         <Col
           style={{
-            width: "30%",
+            maxWidth: "300px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -135,7 +140,7 @@ const About = () => {
               maxWidth: "300px",
               borderRadius: "10px",
               boxShadow: "0px 4px 8px rgba(0,0,0,0.3)",
-              height: "80vh",
+              height: "550px",
             }}
           >
             {images.map((src, index) => (
@@ -153,7 +158,7 @@ const About = () => {
                   alt={`Image ${index + 1}`}
                   style={{
                     width: "100%",
-                    height: "80vh",
+                    height: "550px",
                     borderRadius: "10px",
                   }}
                 />
@@ -164,9 +169,10 @@ const About = () => {
       </Col>
       <Col
         style={{
+          maxWidth:'1200px',
           display: "flex",
-          padding: "0 10%",
-          marginTop: "5%",
+          padding: "0 2rem",
+          marginTop: "3rem",
           justifyContent: "center",
         }}
       >
@@ -200,8 +206,10 @@ const About = () => {
       <Col
         style={{
           display: "flex",
-          padding: "0 10%",
-          height: "80vh",
+
+maxWidth:'1200px',
+          padding: "0 2rem",
+          height: "600px",
         }}
       >
         <Col
@@ -276,8 +284,9 @@ const About = () => {
       <Col
         style={{
           display: "flex",
-          padding: "0 10%",
-          height: "80vh",
+          maxWidth:'1200px',
+          padding: "0 2rem",
+          height: "600px",
         }}
       >
         <Col
@@ -351,8 +360,9 @@ const About = () => {
       <Col
         style={{
           display: "flex",
-          padding: "0 10%",
-          height: "80vh",
+          maxWidth:'1200px',
+          padding: "0 2rem",
+          height: "600px",
         }}
       >
         <Col
@@ -427,8 +437,9 @@ const About = () => {
       <Col
         style={{
           display: "flex",
-          padding: "0 10%",
-          height: "80vh",
+          maxWidth:'1200px',
+          padding: "0 2rem",
+          height: "600px",
         }}
       >
         <Col
@@ -502,8 +513,9 @@ const About = () => {
       <Col
         style={{
           display: "flex",
-          padding: "0 10%",
-          height: "80vh",
+          maxWidth:'1200px',
+          padding: "0 2rem",
+          height: "600px",
         }}
       >
         <Col
@@ -577,8 +589,9 @@ const About = () => {
       <Col
         style={{
           display: "flex",
-          padding: "0 10%",
-          height: "80vh",
+          maxWidth:'1200px',
+          padding: "0 2rem",
+          height: "600px",
         }}
       >
         <Col
@@ -652,8 +665,10 @@ const About = () => {
       <Col
         style={{
           display: "flex",
-          padding: "0 10%",
-          marginTop: "5%",
+          maxWidth:'1200px',
+          padding: "0 2rem",
+          height: "600px",
+          marginTop: "3rem",
           flexDirection: "column",
           justifyContent: "center",
         }}
@@ -736,7 +751,7 @@ const About = () => {
           flexDirection: "column",
           gap: 10,
           alignItems: "center",
-          marginTop: "5%",
+          marginTop: "3rem",
         }}
       >
         <Text
@@ -756,7 +771,7 @@ const About = () => {
             fontSize: "24px",
             fontWeight: 500,
             lineHeight: "140%",
-            width: "60%",
+            maxWidth: "700px",
             textAlign: "center",
             color: "rgb(141, 141, 141)",
           }}
@@ -774,8 +789,8 @@ const About = () => {
           flexDirection: "column",
           gap: 10,
           alignItems: "center",
-          paddingBottom: "5%",
-          marginTop: "10%",
+          paddingBottom: "3rem",
+          marginTop: "6rem",
         }}
       >
         <Text
@@ -791,7 +806,9 @@ const About = () => {
         </Text>
 
       </Col>
-      <Row gutter={[24, 24]} style={{padding:"0 10%",marginBottom:'20%'}}>
+      <Row gutter={[24, 24]} style={{ maxWidth:'1200px',
+          padding: "0 2rem",
+          marginBottom:'20%'}}>
     {blogPosts.map((post, index) => (
       <Col key={index} span={8}>
         <Card
