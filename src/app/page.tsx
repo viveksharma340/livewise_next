@@ -5,20 +5,35 @@ import { SearchBox, Typewriter } from "./Components/SearchBar";
 import styled from "styled-components";
 import Link from "next/link";
 
-export default function Home() {
-  const { Title } = Typography;
-
-  const StyledContainer = styled.div`
-    // background-color: #000000;
-    // padding: 48px 0;
-    display: flex;
+const StyledCol = styled.div`
+  display: flex;
+  padding: 0 2rem;
+  height: 700px;
+  background-color: white;
+  max-width: 1200px;
+  @media (max-width: 1000px) {
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    height:auto;
+  }
+`;
+const StyledColI = styled.div`
+  display: flex;
+          flex-direction:column;
+          width: 50%;
+          justify-content: center;
+          gap: 10px;
+  @media (max-width: 1000px) {
+    
+    width: 100%;
+  }
+`;
 
-    @media (min-width: 900px) {
-      padding: 80px 0;
-    }
-  `;
+export default function Home() {
+
+
+ 
   const { Text } = Typography;
   const questions = [
     "How It Works ?",
@@ -27,25 +42,11 @@ export default function Home() {
     "Are you alive?",
   ];
   return (
-    <Col
-      style={{
-        display: "flex",
-        padding: "0 2rem",
-        height: "700px",
-        backgroundColor: "white",
-        maxWidth: "1200px",
-      }}
+    <StyledCol
     >
-      <Col
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "50%",
-          justifyContent: "center",
-          gap: 10,
-        }}
+      <StyledColI
       >
-        <Text style={{ fontSize: "48px", fontWeight: 500 }}>
+        <Text style={{ fontSize: "38px", fontWeight: 500 }}>
           Networth that outlives you.
         </Text>
         <Text style={{ fontSize: "18px" }}>
@@ -77,7 +78,7 @@ export default function Home() {
           managing, tracking, and ensuring the future of your financial data.
           Your peace of mind is just a click away.
         </Text>
-      </Col>
+      </StyledColI>
       <Col
         style={{
           width: "50%",
@@ -110,6 +111,6 @@ export default function Home() {
           </Col>
         </Col>
       </Col>
-    </Col>
+    </StyledCol>
   );
 }

@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
         <Menu.Item key="about:4" style={{ color: "inherit" }}>Contact Us</Menu.Item>
       </Menu.SubMenu>
       <Menu.Item key="feedback" style={{ color: "white" }}>
-        <Col style={{ color: "inherit" ,backgroundColor:"inherit"}}>FEEDBACK</Col>
+        <Col style={{ color: "inherit" ,backgroundColor:"inherit"}}><Link href={'/feedback'}>FEEDBACK</Link></Col>
       </Menu.Item>
       <Menu.Item key="download" style={{ color: "white" }}>
         <Col style={{ color: "inherit" ,backgroundColor:"inherit"}}><DownloadButton/></Col>
