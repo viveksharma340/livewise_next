@@ -38,7 +38,7 @@ const Navbar: React.FC = () => {
       </Menu.Item>
       <Menu.SubMenu key="about" title="ABOUT US" style={{backgroundColor:"inherit", color: "white !important"}}>
         <Menu.Item key="about:1" style={{ color: "inherit"  }} ><Link href={'/about'}>What’s Livewise</Link></Menu.Item>
-        <Menu.Item key="about:2" style={{ color: "inherit" }}>Team</Menu.Item>
+        <Menu.Item key="about:2" style={{ color: "inherit" }}><Link href={'/team'}>Team</Link></Menu.Item>
         <Menu.Item key="about:4" style={{ color: "inherit" }}>Contact Us</Menu.Item>
       </Menu.SubMenu>
       <Menu.Item key="feedback" style={{ color: "white" }}>
