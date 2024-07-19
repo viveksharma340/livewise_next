@@ -97,8 +97,9 @@ const Team = () => {
           {teamsArray.map((data) => (
             <Card
               key={data.id}
-              style={{ width: 350 }}
-              cover={<img alt="example" src={data.image} />}
+              className="custom-card"
+              // style={{ width: 350,backgroundColor:'inherit',border:'none',boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}
+              cover={<img alt="example" src={data.image} style={{borderRadius:'170px',height:'350px'}}/>}
               actions={[
                 <FontAwesomeIcon
                   icon={faLinkedin}

@@ -21,7 +21,7 @@ const StyledInputContainer = styled.div`
 `;
 
 export const SearchBox = () => (
-  <Link href={'/about'} style={{cursor:'pointer'}}>
+  <Link href={'/#about'} style={{cursor:'pointer'}}>
   <StyledInputContainer>
     <Input
       size="large"
