@@ -18,7 +18,7 @@ const MainDiv = styled(Col)`
   max-width: 1200px;
   width: 100%;
   display: flex;
-  @media only screen and (max-width: 1000px) {
+  @media (max-width: 1000px) {
     flex-direction: column;
   }
 `;
@@ -30,7 +30,7 @@ const LeftDiv = styled(Col)`
   padding-left: 2rem;
   height: 500px;
   justify-content: center;
-  @media only screen and (max-width: 1000px) {
+  @media (max-width: 1000px) {
     width: 100%;
     padding: 2rem;
     align-items: center;
@@ -40,7 +40,7 @@ const LeftDiv = styled(Col)`
 const RightDiv = styled(Col)`
  width:50%;
   padding:3rem  2rem;
-  @media only screen and (max-width: 1000px) {
+  @media (max-width: 1000px) {
   width:100%;
    
 `;
@@ -54,21 +54,21 @@ const HeaderText = styled(Text)`
  font-size:38px;
 font-weight: 500;
 color:rgb(58, 58, 58);
-  @media only screen and (max-width: 1000px) {
+  @media (max-width: 1000px) {
 font-size:28px;  
 text-align:center; 
 `;
 const SubHeader = styled(Text)`
 font-size:18px;
 color:rgb(141, 141, 141);
-  @media only screen and (max-width: 1000px) {
+  @media (max-width: 1000px) {
 font-size:16px;  
 text-align:center; 
 `;
 const FormHeader = styled(Text)`
 font-size:30px;
  font-weight: 500;
-  @media only screen and (max-width: 1000px) {
+  @media (max-width: 1000px) {
 font-size:24px;  
 `;
 
