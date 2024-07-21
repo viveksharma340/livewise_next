@@ -42,7 +42,7 @@ const StyledCol = styled.div`
   display: flex;
   padding: 0 2rem;
   max-width: 1200px;
-  @media (max-width: 1000px) {
+   @media only screen and (max-width: 1000px) {
     flex-direction: column;
     align-items: center;
     width: 100%;
@@ -56,7 +56,7 @@ const StyledColI = styled.div`
   width: 50%;
   justify-content: center;
   gap: 10px;
-  @media (max-width: 1000px) {
+   @media only screen and (max-width: 1000px) {
     width: 100%;
   }
 `;
