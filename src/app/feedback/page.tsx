@@ -2,7 +2,19 @@
 import { Button, Col, Typography } from "antd";
 import React from "react";
 import { Form, Input } from "antd";
-import {SendOutlined } from '@ant-design/icons'
+import { SendOutlined } from "@ant-design/icons";
+import {
+  ButtonOne,
+  Container,
+  FormContainer,
+  FormHeader,
+  HeaderText,
+  LeftDiv,
+  MainDiv,
+  RightDiv,
+  SubHeader,
+  SubmitButton,
+} from "./styled";
 const inputStyle = {
   border: "none",
   borderBottom: "1px solid #d9d9d9",
@@ -19,70 +31,29 @@ const Feedback: React.FC = () => {
     console.log("Form values:", values);
   };
   return (
-    <Col
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "100%",
-        background:
-          "linear-gradient(to bottom, #eff6ff 0%, #eff6ff 500px, white 500px, white 100%)",
-      }}
-    >
-      <Col style={{ maxWidth: "1200px", width: "100%", display: "flex" }}>
-        <Col
-          style={{
-            width: "50%",
-            display: "flex",
-            flexDirection: "column",
-            gap: "10px",
-            paddingLeft: "2rem",
-            height: "500px",
-            justifyContent: "center",
-          }}
-        >
-          <Button
-            style={{
-              backgroundColor: "#37878b",
-              color: "white",
-              width: "100px",
-              height:'40px'
-            }}
-          >
-            Let's Talk
-          </Button>
-          <Text
-            style={{
-              fontSize: "38px",
-              fontWeight: 500,
-              color: "rgb(58, 58, 58)",
-            }}
-          >
-            Let's Talk About Your Experience.
-          </Text>
-          <Text style={{ fontSize: "18px", color: "rgb(141, 141, 141)" }}>
+    <Container>
+      <MainDiv>
+        <LeftDiv>
+          <ButtonOne>Let's Talk</ButtonOne>
+          <HeaderText>Let's Talk About Your Experience.</HeaderText>
+          <SubHeader>
             We would love to hear about your recent visit. Your feedback helps
             us enhance our service and provide a better experience for you and
             others.
-          </Text>
-        </Col>
-        <Col style={{ width: "50%", padding: "3rem  2rem" }}>
-          <Col
-            style={{
-              backgroundColor: "white",
-              padding: "2rem",
-              borderRadius: "20px",
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-            }}
-          >
+          </SubHeader>
+        </LeftDiv>
+        <RightDiv>
+          <FormContainer>
             <Form
               name="send_message"
               onFinish={onFinish}
               layout="vertical"
-              style={{ maxWidth: 600, margin: "0 auto" }}
+              // style={{ maxWidth: 600, margin: "0 auto" }}
             >
-              <Col style={{textAlign:'center'}}><Text style={{fontSize:"30px",fontWeight:500}}>Send Message</Text></Col>
-              
+              <Col style={{ textAlign: "center" }}>
+                <FormHeader>Send Message</FormHeader>
+              </Col>
+
               <Form.Item
                 name="fullName"
                 label="Full Name"
@@ -125,19 +96,19 @@ const Feedback: React.FC = () => {
               </Form.Item>
 
               <Form.Item>
-                <Button icon={<SendOutlined/>}
-                  style={{fontWeight:500,width:"150px", backgroundColor: "#37878b", color: "white",height:'55px' }}
+                <SubmitButton
+                  icon={<SendOutlined />}
                   type="primary"
                   htmlType="submit"
                 >
                   Send
-                </Button>
+                </SubmitButton>
               </Form.Item>
             </Form>
-          </Col>
-        </Col>
-      </Col>
-    </Col>
+          </FormContainer>
+        </RightDiv>
+      </MainDiv>
+    </Container>
   );
 };
 
