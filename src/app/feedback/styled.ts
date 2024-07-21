@@ -18,7 +18,7 @@ const MainDiv = styled(Col)`
   max-width: 1200px;
   width: 100%;
   display: flex;
-  @media (max-width: 1000px) {
+  @media only screen and (max-width: 1000px) {
     flex-direction: column;
   }
 `;
