@@ -123,8 +123,17 @@ export default function Home() {
           "linear-gradient(to bottom, #f4e7bf 0%, #f4e7bf 500px, white 500px, white 100%)",
       }}
     >
-      <StyledCol>
-        <StyledColI>
+      <Col style={{ display: "flex", padding: " 0 2rem", maxWidth: "1200px" }}>
+        <Col
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            height: "500px",
+            width: "50%",
+            justifyContent: "center",
+            gap: "10px",
+          }}
+        >
           <Text style={{ fontSize: "38px", fontWeight: 500 }}>
             Networth that outlives you.
           </Text>
@@ -157,7 +166,7 @@ export default function Home() {
             managing, tracking, and ensuring the future of your financial data.
             Your peace of mind is just a click away.
           </Text>
-        </StyledColI>
+        </Col>
         <Col
           style={{
             width: "50%",
@@ -191,7 +200,7 @@ export default function Home() {
             </Col>
           </Col>
         </Col>
-      </StyledCol>
+      </Col>
       <Col
         style={{
           maxWidth: "1200px",
