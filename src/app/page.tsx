@@ -1,31 +1,62 @@
 "use client";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 import { Button, Card, Col, Row, Typography } from "antd";
 import { SearchBox, Typewriter } from "./Components/SearchBar";
 import styled from "styled-components";
 import Link from "next/link";
 import FeatureBox from "./Components/FeatureBox/FeatureBox";
 
+const AnimatedCol = ({ children, animationDirection }:any) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const animationProps = {
+    initial: { x: animationDirection === 'left' ? -200 : 200, opacity: 0 },
+    animate: inView ? { x: 0, opacity: 1 } : { x: animationDirection === 'left' ? -200 : 200, opacity: 0 },
+    transition: { duration: 1 },
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      {...animationProps}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        width: "50%",
+        justifyContent: "center",
+        alignItems:animationDirection === 'left'?'flex-start':"flex-end",
+        gap: 10,
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 const StyledCol = styled.div`
   display: flex;
-  padding:0 2rem;
+  padding: 0 2rem;
   max-width: 1200px;
   @media (max-width: 1000px) {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height:auto;
+    height: auto;
   }
 `;
 const StyledColI = styled.div`
   display: flex;
-          flex-direction:column;
-          height:500px;
-          width: 50%;
-          justify-content: center;
-          gap: 10px;
+  flex-direction: column;
+  height: 500px;
+  width: 50%;
+  justify-content: center;
+  gap: 10px;
   @media (max-width: 1000px) {
-    
     width: 100%;
   }
 `;
@@ -53,37 +84,34 @@ const featureData = [
   },
 ];
 export default function Home() {
-
   const blogPosts = [
     {
       imgSrc:
         "https://static.wixstatic.com/media/ca32c5_bcb6ab48d3724375b37010e242408ac7~mv2.jpeg/v1/crop/x_114,y_0,w_571,h_800/fill/w_394,h_552,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/ashish.jpeg",
       title: "Ashish Jindal",
-      role:"Consultant @ BCG , B.Tech IIT-B and MBA IIM-A",
+      role: "Consultant @ BCG , B.Tech IIT-B and MBA IIM-A",
       description:
         "I can't thank Livewise enough for its proactive approach to financial security. The life-checkin and notification system ensures I stay on top of my finances and, in case of any unexpected event, my nominees will be informed promptly. It's like having a personal financial guardian in your pocket",
     },
     {
       imgSrc:
         "https://static.wixstatic.com/media/ca32c5_8aea025dca1b41a6979de625dd3c1383~mv2.jpeg/v1/crop/x_43,y_0,w_213,h_299/fill/w_298,h_417,al_c,lg_1,q_80,enc_auto/manish.jpeg",
-      title:
-        "Manish Maharaj",
-        role:"Regional Sales Manager Pidilite, Ex-Johnson & Johnson",
+      title: "Manish Maharaj",
+      role: "Regional Sales Manager Pidilite, Ex-Johnson & Johnson",
       description:
         "Livewise is a financial lifesaver! With its user-friendly interface, I can effortlessly manage my assets, liabilities, and insurances while keeping my loved ones informed. The peace of mind it provides is priceless",
     },
     {
       imgSrc:
         "https://static.wixstatic.com/media/ca32c5_4aa6e045b0be45a196e5bda48d3c8715~mv2.jpeg/v1/crop/x_51,y_0,w_253,h_355/fill/w_354,h_496,al_c,lg_1,q_80,enc_auto/karma.jpeg",
-      title:
-        "Ashish Vishwakarma",
-        role:"Staff Software Engineer @ Walmart Global Techr",
+      title: "Ashish Vishwakarma",
+      role: "Staff Software Engineer @ Walmart Global Techr",
       description:
         "Livewise has revolutionized how I plan for the future. Adding primary and secondary nominees is a breeze, and the net worth tracking feature is a game-changer. This app is a must-have for anyone who wants to take control of their financial well-being.",
       date: "May 17th, 2021",
     },
   ];
- 
+
   const { Text } = Typography;
   const questions = [
     "How It Works ?",
@@ -102,79 +130,76 @@ export default function Home() {
           "linear-gradient(to bottom, #f4e7bf 0%, #f4e7bf 500px, white 500px, white 100%)",
       }}
     >
-    <StyledCol
-    >
-      <StyledColI
-      >
-        <Text style={{ fontSize: "38px", fontWeight: 500 }}>
-          Networth that outlives you.
-        </Text>
-        <Text style={{ fontSize: "18px" }}>
-          Livewise allows you to securely store your key financial info like
-          Assets, Liabilities & Insurances and ensures it gets to your nominee
-          after you are gone.
-        </Text>
-        <Button
+      <StyledCol>
+        <StyledColI>
+          <Text style={{ fontSize: "38px", fontWeight: 500 }}>
+            Networth that outlives you.
+          </Text>
+          <Text style={{ fontSize: "18px" }}>
+            Livewise allows you to securely store your key financial info like
+            Assets, Liabilities & Insurances and ensures it gets to your nominee
+            after you are gone.
+          </Text>
+          <Button
+            style={{
+              backgroundColor: "black",
+              color: "white",
+              width: "130px",
+              borderRadius: "30px",
+              height: "50px",
+              fontSize: "16px",
+              fontWeight: 500,
+            }}
+          >
+            <Link
+              target="_blank"
+              style={{ color: "white !important" }}
+              href={"https://play.google.com/store/apps/details?id=in.livewise"}
+            >
+              Get Started
+            </Link>
+          </Button>
+          <Text style={{ fontSize: "14px" }}>
+            Secure your financial legacy with Livewise. Sign up today to start
+            managing, tracking, and ensuring the future of your financial data.
+            Your peace of mind is just a click away.
+          </Text>
+        </StyledColI>
+        <Col
           style={{
-            backgroundColor: "black",
-            color: "white",
-            width: "130px",
-            borderRadius: "30px",
-            height: "50px",
-            fontSize: "16px",
-            fontWeight: 500,
+            width: "50%",
+            paddingTop: "3rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-          <Link
-            target="_blank"
-            style={{ color: "white !important" }}
-            href={"https://play.google.com/store/apps/details?id=in.livewise"}
-          >
-            Get Started
-          </Link>
-        </Button>
-        <Text style={{ fontSize: "14px" }}>
-          Secure your financial legacy with Livewise. Sign up today to start
-          managing, tracking, and ensuring the future of your financial data.
-          Your peace of mind is just a click away.
-        </Text>
-      </StyledColI>
-      <Col
-     
-        style={{
-          width: "50%",
-          paddingTop:'3rem',
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Col style={{ width: "55%", height: "550px", }}>
-          <Image
-            src={"/homeBanner.png"}
-            alt="Decorative banner showing financial growth"
-            layout="fill"
-          />
-        </Col>
-        <Col style={{ position: "absolute", bottom: "12rem", width: "80%" }}>
-          <Col style={{ position: "relative", width: "100%" }}>
-            <SearchBox />
-            <Col
-              style={{
-                display: "flex",
-                justifyContent: "flex-start",
-                position: "absolute",
-                top: "7px",
-                left: "34px",
-              }}
-            >
-              <Typewriter messages={questions} delay={150} />
+          <Col style={{ width: "55%", height: "550px" }}>
+            <Image
+              src={"/homeBanner.png"}
+              alt="Decorative banner showing financial growth"
+              layout="fill"
+            />
+          </Col>
+          <Col style={{ position: "absolute", bottom: "12rem", width: "80%" }}>
+            <Col style={{ position: "relative", width: "100%" }}>
+              <SearchBox />
+              <Col
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-start",
+                  position: "absolute",
+                  top: "7px",
+                  left: "34px",
+                }}
+              >
+                <Typewriter messages={questions} delay={150} />
+              </Col>
             </Col>
           </Col>
         </Col>
-      </Col>
-    </StyledCol>
-    <Col
+      </StyledCol>
+      <Col
         style={{
           maxWidth: "1200px",
           display: "flex",
@@ -183,8 +208,16 @@ export default function Home() {
           justifyContent: "center",
         }}
       >
-        <Col  id='about'
-      className="about" style={{ display: "flex", flexDirection: "column", gap: 10 ,paddingTop:'3rem'}}>
+        <Col
+          id="about"
+          className="about"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 10,
+            paddingTop: "3rem",
+          }}
+        >
           <Text
             style={{
               fontSize: "48px",
@@ -211,465 +244,370 @@ export default function Home() {
           </Text>
         </Col>
       </Col>
-      <Col
-        style={{
-          display: "flex",
-
-          maxWidth: "1200px",
-          padding: "0 2rem",
-          height: "600px",
-        }}
-      >
-        <Col
+      <div>
+        <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            width: "50%",
-            justifyContent: "center",
-            gap: 10,
+            maxWidth: "1200px",
+            padding: "0 2rem",
+            height: "600px",
           }}
         >
-          <Text
-            style={{
-              fontSize: "48px",
-              fontWeight: 500,
-              lineHeight: "110%",
-              color: "rgb(58, 58, 58)",
-            }}
-          >
-            Add Nominees and Financial Info{" "}
-          </Text>
-
-          <Text
-            style={{
-              fontSize: "24px",
-              fontWeight: 500,
-              lineHeight: "140%",
-              color: "rgb(141, 141, 141)",
-            }}
-          >
-            The Livewise mobile app provides a conventient way to record details
-            about your various assets & liabilities and insurances. You can
-            specify a primary & secondary nominee. We support all major
-            currencies.
-          </Text>
-        </Col>
-        <Col
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "50%",
-            justifyContent: "center",
-            alignItems: "flex-end",
-          }}
-        >
-          <Col
-            style={{
-              height: "250px",
-              width: "250px",
-              backgroundColor: "#e0edf4",
-              borderRadius: "25px",
-              position: "relative",
-              marginTop: "105px",
-            }}
-          >
-            <Image
+          <AnimatedCol animationDirection="left">
+            <Text
               style={{
-                position: "absolute",
-                bottom: "45px",
-                right: "45px",
-                borderRadius: "25px",
-                boxShadow: "10px 10px 20px rgba(0, 0, 0, 0.2)",
+                fontSize: "48px",
+                fontWeight: 500,
+                lineHeight: "110%",
+                color: "rgb(58, 58, 58)",
               }}
-              src={"/aboutOne.webp"}
-              alt="fdsg"
-              width={300}
-              height={300}
-            />
-          </Col>
-        </Col>
-      </Col>
-      <Col
-        style={{
-          display: "flex",
-          maxWidth: "1200px",
-          padding: "0 2rem",
-          height: "600px",
-        }}
-      >
-        <Col
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "50%",
-            justifyContent: "center",
-            alignItems: "flex-start",
-          }}
-        >
-          <Col
-            style={{
-              height: "250px",
-              width: "250px",
-              backgroundColor: "#d7f0ca",
-              borderRadius: "25px",
-              position: "relative",
-              marginTop: "105px",
-            }}
-          >
-            <Image
+            >
+              Add Nominees and Financial Info
+            </Text>
+            <Text
               style={{
-                position: "absolute",
-                bottom: "45px",
-                left: "45px",
-                borderRadius: "25px",
-                boxShadow: "10px 10px 20px rgba(0, 0, 0, 0.2)",
+                fontSize: "24px",
+                fontWeight: 500,
+                lineHeight: "140%",
+                color: "rgb(141, 141, 141)",
               }}
-              src={"/aboutTwo.webp"}
-              alt="fdsg"
-              width={300}
-              height={300}
-            />
-          </Col>
-        </Col>
-        <Col
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "50%",
-            justifyContent: "center",
-            gap: 10,
-          }}
-        >
-          <Text
-            style={{
-              fontSize: "48px",
-              fontWeight: 500,
-              lineHeight: "110%",
-              color: "rgb(58, 58, 58)",
-            }}
-          >
-            Track your Net Worth
-          </Text>
-
-          <Text
-            style={{
-              fontSize: "24px",
-              fontWeight: 500,
-              lineHeight: "140%",
-              color: "rgb(141, 141, 141)",
-            }}
-          >
-            The charts allow you to visually analyze how your Net Worth is
-            spread and how its growing with time. You can really drill down and
-            specify value of an assets as it was on given dates
-          </Text>
-        </Col>
-      </Col>
-      <Col
-        style={{
-          display: "flex",
-          maxWidth: "1200px",
-          padding: "0 2rem",
-          height: "600px",
-        }}
-      >
-        <Col
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "50%",
-            justifyContent: "center",
-            gap: 10,
-          }}
-        >
-          <Text
-            style={{
-              fontSize: "48px",
-              fontWeight: 500,
-              lineHeight: "110%",
-              color: "rgb(58, 58, 58)",
-            }}
-          >
-            Are you alive?
-          </Text>
-
-          <Text
-            style={{
-              fontSize: "24px",
-              fontWeight: 500,
-              lineHeight: "140%",
-              color: "rgb(141, 141, 141)",
-            }}
-          >
-            The app invites you to login periodically. After 45 days of
-            inactivity, we try to reach out to you via automated notification on
-            the app, sms and emails. If we really can't get to you, maybe
-            something is not right
-          </Text>
-        </Col>
-        <Col
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "50%",
-            justifyContent: "center",
-            alignItems: "flex-end",
-          }}
-        >
-          <Col
-            style={{
-              height: "250px",
-              width: "250px",
-              backgroundColor: "#f3e7c0",
-              borderRadius: "25px",
-              position: "relative",
-              marginTop: "105px",
-            }}
-          >
-            <Image
+            >
+              The Livewise mobile app provides a convenient way to record
+              details about your various assets & liabilities and insurances.
+              You can specify a primary & secondary nominee. We support all
+              major currencies.
+            </Text>
+          </AnimatedCol>
+          <AnimatedCol animationDirection="right">
+            <Col
               style={{
-                position: "absolute",
-                bottom: "45px",
-                right: "45px",
+                height: "250px",
+                width: "250px",
+                backgroundColor: "#e0edf4",
                 borderRadius: "25px",
-                boxShadow: "10px 10px 20px rgba(0, 0, 0, 0.2)",
+                position: "relative",
+                marginTop: "105px",
               }}
-              src={"/aboutThree.webp"}
-              alt="fdsg"
-              width={300}
-              height={300}
-            />
-          </Col>
-        </Col>
-      </Col>
-      <Col
-        style={{
-          display: "flex",
-          maxWidth: "1200px",
-          padding: "0 2rem",
-          height: "600px",
-        }}
-      >
-        <Col
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "50%",
-            justifyContent: "center",
-            alignItems: "flex-start",
-          }}
-        >
-          <Col
-            style={{
-              height: "250px",
-              width: "250px",
-              backgroundColor: "#e0edf4",
-              borderRadius: "25px",
-              position: "relative",
-              marginTop: "105px",
-            }}
-          >
-            <Image
-              style={{
-                position: "absolute",
-                bottom: "45px",
-                left: "45px",
-                borderRadius: "25px",
-                boxShadow: "10px 10px 20px rgba(0, 0, 0, 0.2)",
-              }}
-              src={"/aboutFour.webp"}
-              alt="fdsg"
-              width={300}
-              height={300}
-            />
-          </Col>
-        </Col>
-        <Col
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "50%",
-            justifyContent: "center",
-            gap: 10,
-          }}
-        >
-          <Text
-            style={{
-              fontSize: "48px",
-              fontWeight: 500,
-              lineHeight: "110%",
-              color: "rgb(58, 58, 58)",
-            }}
-          >
-            We reaching out to the Nominee{" "}
-          </Text>
+            >
+              <Image
+                style={{
+                  position: "absolute",
+                  bottom: "45px",
+                  right: "45px",
+                  borderRadius: "25px",
+                  boxShadow: "10px 10px 20px rgba(0, 0, 0, 0.2)",
+                }}
+                src={"/aboutOne.webp"}
+                alt="fdsg"
+                width={300}
+                height={300}
+              />
+            </Col>
+          </AnimatedCol>
+        </div>
 
-          <Text
-            style={{
-              fontSize: "24px",
-              fontWeight: 500,
-              lineHeight: "140%",
-              color: "rgb(141, 141, 141)",
-            }}
-          >
-            Our Automated systems reach out to the primary nominee to know if
-            the user is alright. If otherwise, we request the nominee to
-            initiate information retrieval by sharing relevant docs
-          </Text>
-        </Col>
-      </Col>
-      <Col
-        style={{
-          display: "flex",
-          maxWidth: "1200px",
-          padding: "0 2rem",
-          height: "600px",
-        }}
-      >
-        <Col
+        <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            width: "50%",
-            justifyContent: "center",
-            gap: 10,
+            maxWidth: "1200px",
+            padding: "0 2rem",
+            height: "600px",
           }}
         >
-          <Text
-            style={{
-              fontSize: "48px",
-              fontWeight: 500,
-              lineHeight: "110%",
-              color: "rgb(58, 58, 58)",
-            }}
-          >
-            Nominee Sends us Death Certificate and ID proof
-          </Text>
-
-          <Text
-            style={{
-              fontSize: "24px",
-              fontWeight: 500,
-              lineHeight: "140%",
-              color: "rgb(141, 141, 141)",
-            }}
-          >
-            Nominee needs to send the Death Certificate and an identity proof.
-            If Primary Nominee does not respond within specified time- we reach
-            out to Secondary Nominee
-          </Text>
-        </Col>
-        <Col
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "50%",
-            justifyContent: "center",
-            alignItems: "flex-end",
-          }}
-        >
-          <Col
-            style={{
-              height: "250px",
-              width: "250px",
-              backgroundColor: "#d7f0ca",
-              borderRadius: "25px",
-              position: "relative",
-              marginTop: "105px",
-            }}
-          >
-            <Image
+          <AnimatedCol animationDirection="left">
+            <Col
               style={{
-                position: "absolute",
-                bottom: "45px",
-                right: "45px",
+                height: "250px",
+                width: "250px",
+                backgroundColor: "#d7f0ca",
                 borderRadius: "25px",
-                boxShadow: "10px 10px 20px rgba(0, 0, 0, 0.2)",
+                position: "relative",
+                marginTop: "105px",
               }}
-              src={"/aboutFive.webp"}
-              alt="fdsg"
-              width={300}
-              height={300}
-            />
-          </Col>
-        </Col>
-      </Col>
-      <Col
-        style={{
-          display: "flex",
-          maxWidth: "1200px",
-          padding: "0 2rem",
-          height: "600px",
-        }}
-      >
-        <Col
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "50%",
-            justifyContent: "center",
-            alignItems: "flex-start",
-          }}
-        >
-          <Col
-            style={{
-              height: "250px",
-              width: "250px",
-              backgroundColor: "#f3e7c0",
-              borderRadius: "25px",
-              position: "relative",
-              marginTop: "105px",
-            }}
-          >
-            <Image
+            >
+              <Image
+                style={{
+                  position: "absolute",
+                  bottom: "45px",
+                  left: "45px",
+                  borderRadius: "25px",
+                  boxShadow: "10px 10px 20px rgba(0, 0, 0, 0.2)",
+                }}
+                src={"/aboutTwo.webp"}
+                alt="fdsg"
+                width={300}
+                height={300}
+              />
+            </Col>
+          </AnimatedCol>
+          <AnimatedCol animationDirection="right">
+            <Text
               style={{
-                position: "absolute",
-                bottom: "45px",
-                left: "45px",
-                borderRadius: "25px",
-                boxShadow: "10px 10px 20px rgba(0, 0, 0, 0.2)",
+                fontSize: "48px",
+                fontWeight: 500,
+                lineHeight: "110%",
+                color: "rgb(58, 58, 58)",
               }}
-              src={"/aboutSix.webp"}
-              alt="fdsg"
-              width={300}
-              height={300}
-            />
-          </Col>
-        </Col>
-        <Col
+            >
+              Track your Net Worth
+            </Text>
+            <Text
+              style={{
+                fontSize: "24px",
+                fontWeight: 500,
+                lineHeight: "140%",
+                color: "rgb(141, 141, 141)",
+              }}
+            >
+              The charts allow you to visually analyze how your Net Worth is
+              spread and how its growing with time. You can really drill down
+              and specify value of an assets as it was on given dates
+            </Text>
+          </AnimatedCol>
+        </div>
+
+        <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            width: "50%",
-            justifyContent: "center",
-            gap: 10,
+            maxWidth: "1200px",
+            padding: "0 2rem",
+            height: "600px",
           }}
         >
-          <Text
-            style={{
-              fontSize: "48px",
-              fontWeight: 500,
-              lineHeight: "110%",
-              color: "rgb(58, 58, 58)",
-            }}
-          >
-            We share with Nominee a Detailed Document with all the user's info
-          </Text>
+          <AnimatedCol animationDirection="left">
+            <Text
+              style={{
+                fontSize: "48px",
+                fontWeight: 500,
+                lineHeight: "110%",
+                color: "rgb(58, 58, 58)",
+              }}
+            >
+              Are you alive?
+            </Text>
+            <Text
+              style={{
+                fontSize: "24px",
+                fontWeight: 500,
+                lineHeight: "140%",
+                color: "rgb(141, 141, 141)",
+              }}
+            >
+              The app invites you to login periodically. After 45 days of
+              inactivity, we try to reach out to you via automated notification
+              on the app, sms and emails. If we really can't get to you, maybe
+              something is not right
+            </Text>
+          </AnimatedCol>
+          <AnimatedCol animationDirection="right">
+            <Col
+              style={{
+                height: "250px",
+                width: "250px",
+                backgroundColor: "#f3e7c0",
+                borderRadius: "25px",
+                position: "relative",
+                marginTop: "105px",
+              }}
+            >
+              <Image
+                style={{
+                  position: "absolute",
+                  bottom: "45px",
+                  right: "45px",
+                  borderRadius: "25px",
+                  boxShadow: "10px 10px 20px rgba(0, 0, 0, 0.2)",
+                }}
+                src={"/aboutThree.webp"}
+                alt="fdsg"
+                width={300}
+                height={300}
+              />
+            </Col>
+          </AnimatedCol>
+        </div>
 
-          <Text
-            style={{
-              fontSize: "24px",
-              fontWeight: 500,
-              lineHeight: "140%",
-              color: "rgb(141, 141, 141)",
-            }}
-          >
-            Our team verifies the death certificate and then the system
-            generates a comprehensive summary of all your financial data stored
-            with us and hands it securely to the nominee.
-          </Text>
-        </Col>
-      </Col>
+        <div
+          style={{
+            display: "flex",
+            maxWidth: "1200px",
+            padding: "0 2rem",
+            height: "600px",
+          }}
+        >
+          <AnimatedCol animationDirection="left">
+            <Col
+              style={{
+                height: "250px",
+                width: "250px",
+                backgroundColor: "#e0edf4",
+                borderRadius: "25px",
+                position: "relative",
+                marginTop: "105px",
+              }}
+            >
+              <Image
+                style={{
+                  position: "absolute",
+                  bottom: "45px",
+                  left: "45px",
+                  borderRadius: "25px",
+                  boxShadow: "10px 10px 20px rgba(0, 0, 0, 0.2)",
+                }}
+                src={"/aboutFour.webp"}
+                alt="fdsg"
+                width={300}
+                height={300}
+              />
+            </Col>
+          </AnimatedCol>
+          <AnimatedCol animationDirection="right">
+            <Text
+              style={{
+                fontSize: "48px",
+                fontWeight: 500,
+                lineHeight: "110%",
+                color: "rgb(58, 58, 58)",
+              }}
+            >
+              We reaching out to the Nominee
+            </Text>
+            <Text
+              style={{
+                fontSize: "24px",
+                fontWeight: 500,
+                lineHeight: "140%",
+                color: "rgb(141, 141, 141)",
+              }}
+            >
+              Our Automated systems reach out to the primary nominee to know if
+              the user is alright. If otherwise, we request the nominee to
+              initiate information retrieval by sharing relevant docs
+            </Text>
+          </AnimatedCol>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            maxWidth: "1200px",
+            padding: "0 2rem",
+            height: "600px",
+          }}
+        >
+          <AnimatedCol animationDirection="left">
+            <Text
+              style={{
+                fontSize: "48px",
+                fontWeight: 500,
+                lineHeight: "110%",
+                color: "rgb(58, 58, 58)",
+              }}
+            >
+              Nominee Sends us Death Certificate and ID proof
+            </Text>
+            <Text
+              style={{
+                fontSize: "24px",
+                fontWeight: 500,
+                lineHeight: "140%",
+                color: "rgb(141, 141, 141)",
+              }}
+            >
+              Nominee needs to send the Death Certificate and an identity proof.
+              If Primary Nominee does not respond within specified time- we
+              reach out to Secondary Nominee
+            </Text>
+          </AnimatedCol>
+          <AnimatedCol animationDirection="right">
+            <Col
+              style={{
+                height: "250px",
+                width: "250px",
+                backgroundColor: "#d7f0ca",
+                borderRadius: "25px",
+                position: "relative",
+                marginTop: "105px",
+              }}
+            >
+              <Image
+                style={{
+                  position: "absolute",
+                  bottom: "45px",
+                  right: "45px",
+                  borderRadius: "25px",
+                  boxShadow: "10px 10px 20px rgba(0, 0, 0, 0.2)",
+                }}
+                src={"/aboutFive.webp"}
+                alt="fdsg"
+                width={300}
+                height={300}
+              />
+            </Col>
+          </AnimatedCol>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            maxWidth: "1200px",
+            padding: "0 2rem",
+            height: "600px",
+          }}
+        >
+          <AnimatedCol animationDirection="left">
+            <Col
+              style={{
+                height: "250px",
+                width: "250px",
+                backgroundColor: "#f3e7c0",
+                borderRadius: "25px",
+                position: "relative",
+                marginTop: "105px",
+              }}
+            >
+              <Image
+                style={{
+                  position: "absolute",
+                  bottom: "45px",
+                  left: "45px",
+                  borderRadius: "25px",
+                  boxShadow: "10px 10px 20px rgba(0, 0, 0, 0.2)",
+                }}
+                src={"/aboutSix.webp"}
+                alt="fdsg"
+                width={300}
+                height={300}
+              />
+            </Col>
+          </AnimatedCol>
+          <AnimatedCol animationDirection="right">
+            <Text
+              style={{
+                fontSize: "48px",
+                fontWeight: 500,
+                lineHeight: "110%",
+                color: "rgb(58, 58, 58)",
+              }}
+            >
+              We share with Nominee a Detailed Document with all the user's info
+            </Text>
+            <Text
+              style={{
+                fontSize: "24px",
+                fontWeight: 500,
+                lineHeight: "140%",
+                color: "rgb(141, 141, 141)",
+              }}
+            >
+              Our team verifies the death certificate and then the system
+              generates a comprehensive summary of all your financial data
+              stored with us and hands it securely to the nominee.
+            </Text>
+          </AnimatedCol>
+        </div>
+      </div>
+
       <Col
         style={{
           display: "flex",
@@ -813,26 +751,31 @@ export default function Home() {
           Our Users Say
         </Text>
       </Col>
-      <Col style={{ display: "flex", gap: "2rem",paddingBottom:'3rem' }}>
-          {blogPosts.map((data,index) => (
-            <Card
-              key={index}
-              style={{ width: 350 }}
-              cover={<img alt="example" src={data.imgSrc} style={{height:'300px'}}/>}
-             
-            >
-              <Col style={{ display: "flex", flexDirection: "column" }}>
-                <Text style={{ fontSize: "18px", fontWeight: 500 }}>
-                  {data.title}
-                </Text>
-                <Text style={{ fontStyle: "italic" }}>{data.role}</Text>
-                <Text style={{ marginTop: "1rem", fontSize: "16px" }}>
-                  {data.description}
-                </Text>
-              </Col>
-            </Card>
-          ))}
-        </Col>
+      <Col style={{ display: "flex", gap: "1rem", paddingBottom: "3rem" }}>
+        {blogPosts.map((data, index) => (
+          <Card
+            key={index}
+            style={{ width: 400 }}
+            cover={
+              <img
+                alt="example"
+                src={data.imgSrc}
+                style={{ height: "400px", objectFit: "fill" }}
+              />
+            }
+          >
+            <Col style={{ display: "flex", flexDirection: "column" }}>
+              <Text style={{ fontSize: "18px", fontWeight: 500 }}>
+                {data.title}
+              </Text>
+              <Text style={{ fontStyle: "italic" }}>{data.role}</Text>
+              <Text style={{ marginTop: "1rem", fontSize: "16px" }}>
+                {data.description}
+              </Text>
+            </Col>
+          </Card>
+        ))}
+      </Col>
     </Col>
   );
 }

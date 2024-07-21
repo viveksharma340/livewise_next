@@ -5,7 +5,6 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 import './Navbar.css'; // Assuming you store your CSS here
 import DownloadButton from "./DownloadButton";
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 const Navbar: React.FC = () => {
@@ -39,7 +38,6 @@ const Navbar: React.FC = () => {
       <Menu.SubMenu key="about" title="ABOUT US" style={{backgroundColor:"inherit", color: "white !important"}}>
         <Menu.Item key="about:1" style={{ color: "inherit"  }} ><Link href={'/#about'}>What’s Livewise</Link></Menu.Item>
         <Menu.Item key="about:2" style={{ color: "inherit" }}><Link href={'/team'}>Team</Link></Menu.Item>
-        <Menu.Item key="about:4" style={{ color: "inherit" }}>Contact Us</Menu.Item>
       </Menu.SubMenu>
       <Menu.Item key="feedback" style={{ color: "white" }}>
         <Col style={{ color: "inherit" ,backgroundColor:"inherit"}}><Link href={'/feedback'}>FEEDBACK</Link></Col>

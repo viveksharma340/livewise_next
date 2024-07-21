@@ -827,9 +827,9 @@ const About = () => {
               hoverable
               cover={
                 <img
-                  style={{ height: "450px" }}
+                  style={{ }}
                   alt={post.title}
-                  src={post.imgSrc}
+                  // src={post.imgSrc}
                 />
               }
               style={{ width: "100%" }}

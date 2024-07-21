@@ -25,7 +25,7 @@ export const SearchBox = () => (
   <StyledInputContainer>
     <Input
       size="large"
-      
+      disabled
       placeholder=""
       prefix={<AudioOutlined />}
       suffix={<Button icon={<SendOutlined/>}></Button>}
