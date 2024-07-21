@@ -9,15 +9,17 @@ import styled from "styled-components";
 import Link from "next/link";
 import FeatureBox from "./Components/FeatureBox/FeatureBox";
 
-const AnimatedCol = ({ children, animationDirection }:any) => {
+const AnimatedCol = ({ children, animationDirection }: any) => {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
   const animationProps = {
-    initial: { x: animationDirection === 'left' ? -200 : 200, opacity: 0 },
-    animate: inView ? { x: 0, opacity: 1 } : { x: animationDirection === 'left' ? -200 : 200, opacity: 0 },
+    initial: { x: animationDirection === "left" ? -200 : 200, opacity: 0 },
+    animate: inView
+      ? { x: 0, opacity: 1 }
+      : { x: animationDirection === "left" ? -200 : 200, opacity: 0 },
     transition: { duration: 1 },
   };
 
@@ -30,7 +32,7 @@ const AnimatedCol = ({ children, animationDirection }:any) => {
         flexDirection: "column",
         width: "50%",
         justifyContent: "center",
-        alignItems:animationDirection === 'left'?'flex-start':"flex-end",
+        alignItems: animationDirection === "left" ? "flex-start" : "flex-end",
         gap: 10,
       }}
     >
@@ -42,12 +44,6 @@ const StyledCol = styled.div`
   display: flex;
   padding: 0 2rem;
   max-width: 1200px;
-  @media (max-width: 1000px) {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    height: auto;
-  }
 `;
 const StyledColI = styled.div`
   display: flex;
@@ -56,9 +52,6 @@ const StyledColI = styled.div`
   width: 50%;
   justify-content: center;
   gap: 10px;
-  @media (max-width: 1000px) {
-    width: 100%;
-  }
 `;
 const featureData = [
   {
