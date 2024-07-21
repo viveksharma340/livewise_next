@@ -55,12 +55,6 @@
     }
    
   }
-  @media (max-width: 500px) {
-    .download-btn {
-      padding: 10px !important;
-    }
-   
-  }
 
   .custom-card {
   width: 350px;
