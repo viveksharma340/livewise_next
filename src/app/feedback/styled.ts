@@ -32,16 +32,19 @@ const LeftDiv = styled(Col)`
   justify-content: center;
   @media only screen and (max-width: 1000px) {
     width: 100%;
-    padding: 2rem;
+    padding: 1rem;
     align-items: center;
     height: auto;
   }
 `;
 const RightDiv = styled(Col)`
  width:50%;
-  padding:3rem  2rem;
+  padding:3rem 2rem;
   @media only screen and (max-width: 1000px) {
   width:100%;
+    padding:2rem 1rem;
+
+  }
    
 `;
 const FormContainer = styled(Col)`
@@ -49,6 +52,10 @@ const FormContainer = styled(Col)`
   padding: 2rem;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  @media only screen and (max-width: 1000px) {
+    padding:2rem 1rem;
+
+  }
 `;
 const HeaderText = styled(Text)`
  font-size:38px;
