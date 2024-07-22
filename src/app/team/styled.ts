@@ -1,4 +1,3 @@
-'use client'
 import { Button, Col, Typography } from "antd";
 import styled from "styled-components";
 const Text = Typography;
@@ -33,7 +32,7 @@ const SectionOne = styled(Col)`
   height: 400px;
   justify-content: center;
   align-items: center;
-  @media only screen and(max-width: 1000px) {
+  @media only screen and (max-width: 1000px) {
     height: auto;
     width: 100%;
     padding: 2rem 1rem;

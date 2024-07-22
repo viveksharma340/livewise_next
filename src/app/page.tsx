@@ -5,9 +5,26 @@ import { useInView } from "react-intersection-observer";
 
 import { Button, Card, Col, Row, Typography } from "antd";
 import { SearchBox, Typewriter } from "./Components/SearchBar";
-import styled from "styled-components";
 import Link from "next/link";
 import FeatureBox from "./Components/FeatureBox/FeatureBox";
+import {
+  Container,
+  FlexBox,
+  Header,
+  ImageContainer,
+  InputContainer,
+  LeftSection,
+  MainDiv,
+  MotionDiv,
+  RightSection,
+  StyledBody,
+  StyledHeader,
+  StyledPara,
+  StyledSubHeader,
+  StyledTypoI,
+  StyledTypoII,
+  SubHeader,
+} from "./styled";
 
 const AnimatedCol = ({ children, animationDirection }: any) => {
   const { ref, inView } = useInView({
@@ -24,35 +41,17 @@ const AnimatedCol = ({ children, animationDirection }: any) => {
   };
 
   return (
-    <motion.div
+    <MotionDiv
+    animationDirection={animationDirection}
       ref={ref}
       {...animationProps}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        width: "50%",
-        justifyContent: "center",
-        alignItems: animationDirection === "left" ? "flex-start" : "flex-end",
-        gap: 10,
-      }}
+   
     >
       {children}
-    </motion.div>
+    </MotionDiv>
   );
 };
-const StyledCol = styled.div`
-  display: flex;
-  padding: 0 2rem;
-  max-width: 1200px;
-`;
-const StyledColI = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 500px;
-  width: 50%;
-  justify-content: center;
-  gap: 10px;
-`;
+
 const featureData = [
   {
     iconBg: "linear-gradient(to right, #38a169, #4299e1)",
@@ -113,35 +112,15 @@ export default function Home() {
     "Are you alive?",
   ];
   return (
-    <Col
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "100%",
-        background:
-          "linear-gradient(to bottom, #f4e7bf 0%, #f4e7bf 500px, white 500px, white 100%)",
-      }}
-    >
-      <Col style={{ display: "flex", padding: " 0 2rem", maxWidth: "1200px" }}>
-        <Col
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            height: "500px",
-            width: "50%",
-            justifyContent: "center",
-            gap: "10px",
-          }}
-        >
-          <Text style={{ fontSize: "38px", fontWeight: 500 }}>
-            Networth that outlives you.
-          </Text>
-          <Text style={{ fontSize: "18px" }}>
+    <Container>
+      <MainDiv>
+        <LeftSection>
+          <Header>Networth that outlives you.</Header>
+          <SubHeader>
             Livewise allows you to securely store your key financial info like
             Assets, Liabilities & Insurances and ensures it gets to your nominee
             after you are gone.
-          </Text>
+          </SubHeader>
           <Button
             style={{
               backgroundColor: "black",
@@ -161,29 +140,21 @@ export default function Home() {
               Get Started
             </Link>
           </Button>
-          <Text style={{ fontSize: "14px" }}>
+          <StyledPara>
             Secure your financial legacy with Livewise. Sign up today to start
             managing, tracking, and ensuring the future of your financial data.
             Your peace of mind is just a click away.
-          </Text>
-        </Col>
-        <Col
-          style={{
-            width: "50%",
-            paddingTop: "3rem",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Col style={{ width: "55%", height: "550px" }}>
+          </StyledPara>
+        </LeftSection>
+        <RightSection>
+          <ImageContainer>
             <Image
               src={"/homeBanner.png"}
               alt="Decorative banner showing financial growth"
               layout="fill"
             />
-          </Col>
-          <Col style={{ position: "absolute", bottom: "12rem", width: "80%" }}>
+          </ImageContainer>
+          <InputContainer>
             <Col style={{ position: "relative", width: "100%" }}>
               <SearchBox />
               <Col
@@ -198,9 +169,9 @@ export default function Home() {
                 <Typewriter messages={questions} delay={150} />
               </Col>
             </Col>
-          </Col>
-        </Col>
-      </Col>
+          </InputContainer>
+        </RightSection>
+      </MainDiv>
       <Col
         style={{
           maxWidth: "1200px",
@@ -220,65 +191,33 @@ export default function Home() {
             paddingTop: "3rem",
           }}
         >
-          <Text
-            style={{
-              fontSize: "48px",
-              fontWeight: 500,
-              lineHeight: "110%",
-              textAlign: "center",
-              color: "rgb(58, 58, 58)",
-            }}
+          <StyledHeader
           >
             How It Works ?
-          </Text>
+          </StyledHeader>
 
-          <Text
-            style={{
-              fontSize: "24px",
-              fontWeight: 500,
-              lineHeight: "140%",
-              textAlign: "center",
-              color: "rgb(141, 141, 141)",
-            }}
+          <StyledSubHeader
           >
             At Livewise, we understand how important security and convenience
             are when it comes to your finances. Data safety is our top priority.
-          </Text>
+          </StyledSubHeader>
         </Col>
       </Col>
-      <div>
-        <div
-          style={{
-            display: "flex",
-            maxWidth: "1200px",
-            padding: "0 2rem",
-            height: "600px",
-          }}
+      <FlexBox>
+        <StyledBody
         >
           <AnimatedCol animationDirection="left">
-            <Text
-              style={{
-                fontSize: "48px",
-                fontWeight: 500,
-                lineHeight: "110%",
-                color: "rgb(58, 58, 58)",
-              }}
+            <StyledTypoI
             >
               Add Nominees and Financial Info
-            </Text>
-            <Text
-              style={{
-                fontSize: "24px",
-                fontWeight: 500,
-                lineHeight: "140%",
-                color: "rgb(141, 141, 141)",
-              }}
+            </StyledTypoI>
+            <StyledTypoII
             >
               The Livewise mobile app provides a convenient way to record
               details about your various assets & liabilities and insurances.
               You can specify a primary & secondary nominee. We support all
               major currencies.
-            </Text>
+            </StyledTypoII>
           </AnimatedCol>
           <AnimatedCol animationDirection="right">
             <Col
@@ -306,15 +245,9 @@ export default function Home() {
               />
             </Col>
           </AnimatedCol>
-        </div>
+        </StyledBody>
 
-        <div
-          style={{
-            display: "flex",
-            maxWidth: "1200px",
-            padding: "0 2rem",
-            height: "600px",
-          }}
+        <StyledBody
         >
           <AnimatedCol animationDirection="left">
             <Col
@@ -343,63 +276,33 @@ export default function Home() {
             </Col>
           </AnimatedCol>
           <AnimatedCol animationDirection="right">
-            <Text
-              style={{
-                fontSize: "48px",
-                fontWeight: 500,
-                lineHeight: "110%",
-                color: "rgb(58, 58, 58)",
-              }}
+            <StyledTypoI
             >
               Track your Net Worth
-            </Text>
-            <Text
-              style={{
-                fontSize: "24px",
-                fontWeight: 500,
-                lineHeight: "140%",
-                color: "rgb(141, 141, 141)",
-              }}
+            </StyledTypoI>
+            <StyledTypoII
             >
               The charts allow you to visually analyze how your Net Worth is
               spread and how its growing with time. You can really drill down
               and specify value of an assets as it was on given dates
-            </Text>
+            </StyledTypoII>
           </AnimatedCol>
-        </div>
+        </StyledBody>
 
-        <div
-          style={{
-            display: "flex",
-            maxWidth: "1200px",
-            padding: "0 2rem",
-            height: "600px",
-          }}
+        <StyledBody
         >
           <AnimatedCol animationDirection="left">
-            <Text
-              style={{
-                fontSize: "48px",
-                fontWeight: 500,
-                lineHeight: "110%",
-                color: "rgb(58, 58, 58)",
-              }}
+            <StyledTypoI
             >
               Are you alive?
-            </Text>
-            <Text
-              style={{
-                fontSize: "24px",
-                fontWeight: 500,
-                lineHeight: "140%",
-                color: "rgb(141, 141, 141)",
-              }}
+            </StyledTypoI>
+            <StyledTypoII
             >
               The app invites you to login periodically. After 45 days of
               inactivity, we try to reach out to you via automated notification
               on the app, sms and emails. If we really can't get to you, maybe
               something is not right
-            </Text>
+            </StyledTypoII>
           </AnimatedCol>
           <AnimatedCol animationDirection="right">
             <Col
@@ -427,15 +330,9 @@ export default function Home() {
               />
             </Col>
           </AnimatedCol>
-        </div>
+        </StyledBody>
 
-        <div
-          style={{
-            display: "flex",
-            maxWidth: "1200px",
-            padding: "0 2rem",
-            height: "600px",
-          }}
+        <StyledBody
         >
           <AnimatedCol animationDirection="left">
             <Col
@@ -464,62 +361,32 @@ export default function Home() {
             </Col>
           </AnimatedCol>
           <AnimatedCol animationDirection="right">
-            <Text
-              style={{
-                fontSize: "48px",
-                fontWeight: 500,
-                lineHeight: "110%",
-                color: "rgb(58, 58, 58)",
-              }}
+            <StyledTypoI
             >
               We reaching out to the Nominee
-            </Text>
-            <Text
-              style={{
-                fontSize: "24px",
-                fontWeight: 500,
-                lineHeight: "140%",
-                color: "rgb(141, 141, 141)",
-              }}
+            </StyledTypoI>
+            <StyledTypoII
             >
               Our Automated systems reach out to the primary nominee to know if
               the user is alright. If otherwise, we request the nominee to
               initiate information retrieval by sharing relevant docs
-            </Text>
+            </StyledTypoII>
           </AnimatedCol>
-        </div>
+        </StyledBody>
 
-        <div
-          style={{
-            display: "flex",
-            maxWidth: "1200px",
-            padding: "0 2rem",
-            height: "600px",
-          }}
+        <StyledBody
         >
           <AnimatedCol animationDirection="left">
-            <Text
-              style={{
-                fontSize: "48px",
-                fontWeight: 500,
-                lineHeight: "110%",
-                color: "rgb(58, 58, 58)",
-              }}
+            <StyledTypoI
             >
               Nominee Sends us Death Certificate and ID proof
-            </Text>
-            <Text
-              style={{
-                fontSize: "24px",
-                fontWeight: 500,
-                lineHeight: "140%",
-                color: "rgb(141, 141, 141)",
-              }}
+            </StyledTypoI>
+            <StyledTypoII
             >
               Nominee needs to send the Death Certificate and an identity proof.
               If Primary Nominee does not respond within specified time- we
               reach out to Secondary Nominee
-            </Text>
+            </StyledTypoII>
           </AnimatedCol>
           <AnimatedCol animationDirection="right">
             <Col
@@ -547,15 +414,9 @@ export default function Home() {
               />
             </Col>
           </AnimatedCol>
-        </div>
+        </StyledBody>
 
-        <div
-          style={{
-            display: "flex",
-            maxWidth: "1200px",
-            padding: "0 2rem",
-            height: "600px",
-          }}
+        <StyledBody
         >
           <AnimatedCol animationDirection="left">
             <Col
@@ -584,31 +445,19 @@ export default function Home() {
             </Col>
           </AnimatedCol>
           <AnimatedCol animationDirection="right">
-            <Text
-              style={{
-                fontSize: "48px",
-                fontWeight: 500,
-                lineHeight: "110%",
-                color: "rgb(58, 58, 58)",
-              }}
+            <StyledTypoI
             >
               We share with Nominee a Detailed Document with all the user's info
-            </Text>
-            <Text
-              style={{
-                fontSize: "24px",
-                fontWeight: 500,
-                lineHeight: "140%",
-                color: "rgb(141, 141, 141)",
-              }}
+            </StyledTypoI>
+            <StyledTypoII
             >
               Our team verifies the death certificate and then the system
               generates a comprehensive summary of all your financial data
               stored with us and hands it securely to the nominee.
-            </Text>
+            </StyledTypoII>
           </AnimatedCol>
-        </div>
-      </div>
+        </StyledBody>
+      </FlexBox>
 
       <Col
         style={{
@@ -622,29 +471,15 @@ export default function Home() {
         }}
       >
         <Col style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <Text
-            style={{
-              fontSize: "48px",
-              fontWeight: 500,
-              lineHeight: "110%",
-              textAlign: "center",
-              color: "rgb(58, 58, 58)",
-            }}
+          <StyledHeader
           >
             Concerned About Your Privacy?
-          </Text>
+          </StyledHeader>
 
-          <Text
-            style={{
-              fontSize: "24px",
-              fontWeight: 500,
-              lineHeight: "140%",
-              textAlign: "center",
-              color: "rgb(141, 141, 141)",
-            }}
+          <StyledSubHeader
           >
             See How We Protect You.
-          </Text>
+          </StyledSubHeader>
         </Col>
         <Col style={{ display: "flex", marginTop: "2rem" }}>
           {featureData.map((feature, index) => (
@@ -702,33 +537,18 @@ export default function Home() {
           marginTop: "3rem",
         }}
       >
-        <Text
-          style={{
-            fontSize: "48px",
-            fontWeight: 500,
-            lineHeight: "110%",
-            textAlign: "center",
-            color: "rgb(58, 58, 58)",
-          }}
+        <StyledHeader
         >
           What Nominee Gets ?
-        </Text>
+        </StyledHeader>
 
-        <Text
-          style={{
-            fontSize: "24px",
-            fontWeight: 500,
-            lineHeight: "140%",
-            maxWidth: "700px",
-            textAlign: "center",
-            color: "rgb(141, 141, 141)",
-          }}
+        <StyledSubHeader
         >
           Nominee receives a detailed document with overall financials,
           insurance details, and categorized assets and liabilities. Each entry
           includes specific fields, dates, and amounts in the user's specified
           currency.
-        </Text>
+        </StyledSubHeader>
       </Col>
 
       <Col
@@ -741,17 +561,10 @@ export default function Home() {
           marginTop: "6rem",
         }}
       >
-        <Text
-          style={{
-            fontSize: "48px",
-            fontWeight: 500,
-            lineHeight: "110%",
-            textAlign: "center",
-            color: "rgb(58, 58, 58)",
-          }}
+        <StyledHeader
         >
           Our Users Say
-        </Text>
+        </StyledHeader>
       </Col>
       <Col style={{ display: "flex", gap: "1rem", paddingBottom: "3rem" }}>
         {blogPosts.map((data, index) => (
@@ -778,6 +591,6 @@ export default function Home() {
           </Card>
         ))}
       </Col>
-    </Col>
+    </Container>
   );
 }
