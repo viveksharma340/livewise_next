@@ -64,17 +64,21 @@ const FlexBox = styled(Col)`
 const Header = styled(Text)`
   font-size: 38px;
   font-weight: 500;
+    line-height: 110%;
+
   color: rgb(58, 58, 58);
   @media only screen and (max-width: 1000px) {
-    font-size: 28px;
+    font-size: 32px;
   }
 `;
 const SubHeader = styled(Text)`
   font-size: 18px;
   color: rgb(141, 141, 141);
+    line-height: 140%;
+
   text-align: center;
   @media only screen and (max-width: 1000px) {
-    font-size: 16px;
+    font-size: 17px;
   }
 `;
 const StyledText = styled(Text)`

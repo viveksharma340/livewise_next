@@ -9,6 +9,8 @@ import Link from "next/link";
 import FeatureBox from "./Components/FeatureBox/FeatureBox";
 import {
   Container,
+  FeatureWrapper,
+  FeatureWrapperI,
   FlexBox,
   Header,
   ImageContainer,
@@ -24,6 +26,8 @@ import {
   StyledTypoI,
   StyledTypoII,
   SubHeader,
+  Wrapper,
+  WrapperI,
 } from "./styled";
 
 const AnimatedCol = ({ children, animationDirection }: any) => {
@@ -42,10 +46,9 @@ const AnimatedCol = ({ children, animationDirection }: any) => {
 
   return (
     <MotionDiv
-    animationDirection={animationDirection}
+      animationDirection={animationDirection}
       ref={ref}
       {...animationProps}
-   
     >
       {children}
     </MotionDiv>
@@ -191,28 +194,19 @@ export default function Home() {
             paddingTop: "3rem",
           }}
         >
-          <StyledHeader
-          >
-            How It Works ?
-          </StyledHeader>
+          <StyledHeader>How It Works ?</StyledHeader>
 
-          <StyledSubHeader
-          >
+          <StyledSubHeader>
             At Livewise, we understand how important security and convenience
             are when it comes to your finances. Data safety is our top priority.
           </StyledSubHeader>
         </Col>
       </Col>
       <FlexBox>
-        <StyledBody
-        >
+        <StyledBody>
           <AnimatedCol animationDirection="left">
-            <StyledTypoI
-            >
-              Add Nominees and Financial Info
-            </StyledTypoI>
-            <StyledTypoII
-            >
+            <StyledTypoI>Add Nominees and Financial Info</StyledTypoI>
+            <StyledTypoII>
               The Livewise mobile app provides a convenient way to record
               details about your various assets & liabilities and insurances.
               You can specify a primary & secondary nominee. We support all
@@ -247,8 +241,7 @@ export default function Home() {
           </AnimatedCol>
         </StyledBody>
 
-        <StyledBody
-        >
+        <StyledBody>
           <AnimatedCol animationDirection="left">
             <Col
               style={{
@@ -276,12 +269,8 @@ export default function Home() {
             </Col>
           </AnimatedCol>
           <AnimatedCol animationDirection="right">
-            <StyledTypoI
-            >
-              Track your Net Worth
-            </StyledTypoI>
-            <StyledTypoII
-            >
+            <StyledTypoI>Track your Net Worth</StyledTypoI>
+            <StyledTypoII>
               The charts allow you to visually analyze how your Net Worth is
               spread and how its growing with time. You can really drill down
               and specify value of an assets as it was on given dates
@@ -289,15 +278,10 @@ export default function Home() {
           </AnimatedCol>
         </StyledBody>
 
-        <StyledBody
-        >
+        <StyledBody>
           <AnimatedCol animationDirection="left">
-            <StyledTypoI
-            >
-              Are you alive?
-            </StyledTypoI>
-            <StyledTypoII
-            >
+            <StyledTypoI>Are you alive?</StyledTypoI>
+            <StyledTypoII>
               The app invites you to login periodically. After 45 days of
               inactivity, we try to reach out to you via automated notification
               on the app, sms and emails. If we really can't get to you, maybe
@@ -332,8 +316,7 @@ export default function Home() {
           </AnimatedCol>
         </StyledBody>
 
-        <StyledBody
-        >
+        <StyledBody>
           <AnimatedCol animationDirection="left">
             <Col
               style={{
@@ -361,12 +344,8 @@ export default function Home() {
             </Col>
           </AnimatedCol>
           <AnimatedCol animationDirection="right">
-            <StyledTypoI
-            >
-              We reaching out to the Nominee
-            </StyledTypoI>
-            <StyledTypoII
-            >
+            <StyledTypoI>We reaching out to the Nominee</StyledTypoI>
+            <StyledTypoII>
               Our Automated systems reach out to the primary nominee to know if
               the user is alright. If otherwise, we request the nominee to
               initiate information retrieval by sharing relevant docs
@@ -374,15 +353,12 @@ export default function Home() {
           </AnimatedCol>
         </StyledBody>
 
-        <StyledBody
-        >
+        <StyledBody>
           <AnimatedCol animationDirection="left">
-            <StyledTypoI
-            >
+            <StyledTypoI>
               Nominee Sends us Death Certificate and ID proof
             </StyledTypoI>
-            <StyledTypoII
-            >
+            <StyledTypoII>
               Nominee needs to send the Death Certificate and an identity proof.
               If Primary Nominee does not respond within specified time- we
               reach out to Secondary Nominee
@@ -416,8 +392,7 @@ export default function Home() {
           </AnimatedCol>
         </StyledBody>
 
-        <StyledBody
-        >
+        <StyledBody>
           <AnimatedCol animationDirection="left">
             <Col
               style={{
@@ -445,12 +420,10 @@ export default function Home() {
             </Col>
           </AnimatedCol>
           <AnimatedCol animationDirection="right">
-            <StyledTypoI
-            >
+            <StyledTypoI>
               We share with Nominee a Detailed Document with all the user's info
             </StyledTypoI>
-            <StyledTypoII
-            >
+            <StyledTypoII>
               Our team verifies the death certificate and then the system
               generates a comprehensive summary of all your financial data
               stored with us and hands it securely to the nominee.
@@ -459,29 +432,13 @@ export default function Home() {
         </StyledBody>
       </FlexBox>
 
-      <Col
-        style={{
-          display: "flex",
-          maxWidth: "1200px",
-          padding: "0 2rem",
-          height: "600px",
-          marginTop: "3rem",
-          flexDirection: "column",
-          justifyContent: "center",
-        }}
-      >
+      <Wrapper>
         <Col style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <StyledHeader
-          >
-            Concerned About Your Privacy?
-          </StyledHeader>
+          <StyledHeader>Concerned About Your Privacy?</StyledHeader>
 
-          <StyledSubHeader
-          >
-            See How We Protect You.
-          </StyledSubHeader>
+          <StyledSubHeader>See How We Protect You.</StyledSubHeader>
         </Col>
-        <Col style={{ display: "flex", marginTop: "2rem" }}>
+        <FeatureWrapper>
           {featureData.map((feature, index) => (
             <FeatureBox
               key={index}
@@ -491,7 +448,7 @@ export default function Home() {
               description={feature.description}
             />
           ))}
-        </Col>
+        </FeatureWrapper>
         {/* 
         <Col
           style={{
@@ -518,38 +475,17 @@ export default function Home() {
             items={getItems()}
           />
         </Col> */}
-        <Col
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            width: "50%",
-            justifyContent: "center",
-            gap: 10,
-          }}
-        ></Col>
-      </Col>
-      <Col
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 10,
-          alignItems: "center",
-          marginTop: "3rem",
-        }}
-      >
-        <StyledHeader
-        >
-          What Nominee Gets ?
-        </StyledHeader>
+      </Wrapper>
+      <WrapperI>
+        <StyledHeader>What Nominee Gets ?</StyledHeader>
 
-        <StyledSubHeader
-        >
+        <StyledSubHeader>
           Nominee receives a detailed document with overall financials,
           insurance details, and categorized assets and liabilities. Each entry
           includes specific fields, dates, and amounts in the user's specified
           currency.
         </StyledSubHeader>
-      </Col>
+      </WrapperI>
 
       <Col
         style={{
@@ -561,16 +497,13 @@ export default function Home() {
           marginTop: "6rem",
         }}
       >
-        <StyledHeader
-        >
-          Our Users Say
-        </StyledHeader>
+        <StyledHeader>Our Users Say</StyledHeader>
       </Col>
-      <Col style={{ display: "flex", gap: "1rem", paddingBottom: "3rem" }}>
+      <FeatureWrapperI>
         {blogPosts.map((data, index) => (
           <Card
             key={index}
-            style={{ width: 400 }}
+            style={{ maxWidth: 350 }}
             cover={
               <img
                 alt="example"
@@ -590,7 +523,7 @@ export default function Home() {
             </Col>
           </Card>
         ))}
-      </Col>
+      </FeatureWrapperI>
     </Container>
   );
 }

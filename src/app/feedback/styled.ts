@@ -38,14 +38,12 @@ const LeftDiv = styled(Col)`
   }
 `;
 const RightDiv = styled(Col)`
- width:50%;
-  padding:3rem 2rem;
+  width: 50%;
+  padding: 3rem 2rem;
   @media only screen and (max-width: 1000px) {
-  width:100%;
-    padding:2rem 1rem;
-
+    width: 100%;
+    padding: 2rem 1rem;
   }
-   
 `;
 const FormContainer = styled(Col)`
   background-color: white;
@@ -53,23 +51,26 @@ const FormContainer = styled(Col)`
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   @media only screen and (max-width: 1000px) {
-    padding:2rem 1rem;
-
+    padding: 2rem 1rem;
   }
 `;
 const HeaderText = styled(Text)`
  font-size:38px;
 font-weight: 500;
+    line-height: 110%;
+
 color:rgb(58, 58, 58);
   @media only screen and (max-width: 1000px) {
-font-size:28px;  
+font-size:32px;  
 text-align:center; 
 `;
 const SubHeader = styled(Text)`
 font-size:18px;
+    line-height: 140%;
+
 color:rgb(141, 141, 141);
   @media only screen and (max-width: 1000px) {
-font-size:16px;  
+font-size:17px;  
 text-align:center; 
 `;
 const FormHeader = styled(Text)`
@@ -103,5 +104,5 @@ export {
   SubHeader,
   FormContainer,
   FormHeader,
-  SubmitButton
+  SubmitButton,
 };

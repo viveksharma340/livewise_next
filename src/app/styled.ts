@@ -56,15 +56,19 @@ justify-content:center;
 const Header = styled(Text)`
   font-size: 38px;
   font-weight: 500;
+
+  line-height: 110%;
+  color: rgb(58, 58, 58);
   @media only screen and (max-width: 1000px) {
-    font-size: 28px;
+    font-size: 32px;
     text-align: center;
   }
 `;
 const SubHeader = styled(Text)`
   font-size: 18px;
+  lineheight: 140%;
   @media only screen and (max-width: 1000px) {
-    font-size: 16px;
+    font-size: 17px;
     text-align: center;
   }
 `;
@@ -155,6 +159,62 @@ const FlexBox = styled(Col)`
     gap: 6rem;
   }
 `;
+const FeatureWrapper = styled(Col)`
+  display: flex;
+  margin-top: 2rem;
+
+  @media only screen and (max-width: 950px) {
+    flex-direction: column;
+
+    gap: 1rem;
+  }
+`;
+const FeatureWrapperI = styled(Col)`
+ display:flex;
+  gap:1rem;
+   padding-bottom: 3rem;
+
+  @media only screen and (max-width: 950px) {
+    flex-direction: column;
+    padding:1rem;
+
+  }
+`;
+
+
+
+
+
+const Wrapper = styled(Col)`
+   display: flex;
+          max-width: 1200px;
+          padding: 0 2rem;
+          height: 600px;
+          margin-top: 3rem;
+          flex-direction: column;
+          justify-content:center;
+
+  @media only screen and (max-width: 950px) {
+  width:100%;
+  height:auto;
+  padding:0 1rem;
+
+  
+`;
+const WrapperI = styled(Col)`
+display: flex;
+          flex-direction:column;
+          gap: 10;
+          align-items:center;
+          padding-bottom: 3rem;
+          margin-top: 6rem;
+
+  @media only screen and (max-width: 950px) {
+ padding:3rem 1rem;
+          margin-top: 2rem;
+
+  
+`;
 
 const MotionDiv = styled(motion.div)<MotionDivProps>`
   display: flex;
@@ -187,5 +247,9 @@ export {
   MotionDiv,
   FlexBox,
   StyledTypoI,
-  StyledTypoII
+  StyledTypoII,
+  FeatureWrapper,
+  Wrapper,
+  WrapperI,
+  FeatureWrapperI
 };
